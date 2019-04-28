@@ -13,6 +13,7 @@ class Login extends React.Component {
 			userNiceName: '',
 			userEmail: '',
 			loggedIn: false,
+			loading: false,
 			error: ''
 		}
 	}
@@ -30,6 +31,8 @@ class Login extends React.Component {
 			username: this.state.username,
 			password: this.state.password
 		};
+
+		this.setState( { loading: true } );
 
 		fetch( `${siteUrl}/wp-json/jwt-auth/v1/token`, {
 			method: 'POST',
@@ -54,11 +57,11 @@ class Login extends React.Component {
 						localStorage.setItem( 'token', data.token );
 						localStorage.setItem( 'userName', userNiceName );
 
-						this.setState( { userNiceName, userEmail, loggedIn: true } )
+						this.setState( { userNiceName, userEmail, loggedIn: true, loading: false } )
 
 					} )
 			} )
-			.catch( err => this.setState( { error: err.message } ) );
+			.catch( err => this.setState( { error: err.message, loading: false } ) );
 	};
 
 	handleOnChange = ( event ) => {
@@ -67,7 +70,7 @@ class Login extends React.Component {
 
 	render() {
 
-		const { username, password, userNiceName, loggedIn, error } = this.state;
+		const { username, password, userNiceName, loggedIn, error, loading } = this.state;
 
 		const user = ( userNiceName ) ? userNiceName : localStorage.getItem( 'userName' );
 		console.warn( localStorage.getItem(  'token') );
@@ -104,7 +107,8 @@ class Login extends React.Component {
 								/>
 							</label>
 							<br/>
-							<button className="btn btn-primary" type="submit">Login</button>
+							<button className="btn btn-primary mb-3" type="submit">Login</button>
+							<p>{ loading && 'Processing...' }</p>
 						</form>
 					</div>
 				</React.Fragment>

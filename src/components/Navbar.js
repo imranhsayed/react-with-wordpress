@@ -25,10 +25,10 @@ class Navbar extends React.Component {
 						{ isLoggedIn() ? (
 							<React.Fragment>
 								<li className="nav-item">
-									<button onClick={ this.handleLogout }>Logout</button>
+									<NavLink to={ `/dashboard/${ userName }` }>Dashboard</NavLink>
 								</li>
 								<li className="nav-item">
-									<NavLink to={ `/dashboard/${ userName }` }>Dashboard</NavLink>
+									<button onClick={ this.handleLogout }>Logout</button>
 								</li>
 							</React.Fragment>
 						) : (

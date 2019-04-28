@@ -47,7 +47,7 @@ class Login extends React.Component {
 					.then( ( data ) => {
 
 						if (  undefined === data.token ) {
-							this.setState( { error: data.message } );
+							this.setState( { error: data.message, loading: false } );
 							return;
 						}
 

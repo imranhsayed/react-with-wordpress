@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from "./Navbar";
+import { Redirect } from "@reach/router";
 
 class Login extends React.Component {
 
@@ -9,6 +10,9 @@ class Login extends React.Component {
 		this.state = {
 			username: '',
 			password: '',
+			userNiceName: '',
+			userEmail: '',
+			loggedIn: false,
 			error: ''
 		}
 	}
@@ -44,11 +48,11 @@ class Login extends React.Component {
 							return;
 						}
 
-						sessionStorage( 'token', data.token );
-						const userName = data.user_nicename;
+						sessionStorage.setItem( 'token', data.token );
 
-						const userEmail = data.user_email;
-						window.location.href = `/dashboard?user=${userName}&email=${userEmail}`;
+						const userNiceName = ( data.user_nicename ) ? data.user_nicename : '';
+						const userEmail = ( data.user_email ) ? data.user_email : '';
+						this.setState( { userNiceName, userEmail, loggedIn: true } )
 
 					} )
 			} )
@@ -61,41 +65,47 @@ class Login extends React.Component {
 
 	render() {
 
-		const { username, password, error } = this.state;
-		return (
-			<React.Fragment>
-				<Navbar/>
-				<div className="jumbotron">
-					<h4>Login</h4>
-					{ error && <div className="alert alert-danger" dangerouslySetInnerHTML={ this.createMarkup( error ) }/> }
-					<form onSubmit={ this.onFormSubmit }>
-						<label className="form-group">
-							Username:
-							<input
-								type="text"
-								className="form-control"
-								name="username"
-								value={ username }
-								onChange={ this.handleOnChange }
-							/>
-						</label>
-						<br/>
-						<label className="form-group">
-							Password:
-							<input
-								type="password"
-								className="form-control"
-								name="password"
-								value={ password }
-								onChange={ this.handleOnChange }
-							/>
-						</label>
-						<br/>
-						<button className="btn btn-primary" type="submit">Login</button>
-					</form>
-				</div>
-			</React.Fragment>
-		)
+		const { username, password, userNiceName, userEmail, loggedIn, error } = this.state;
+
+		if ( loggedIn ) {
+			return ( <Redirect to={`/dashboard?user=${userNiceName}&email=${userEmail}`} /> )
+		} else {
+			return (
+				<React.Fragment>
+					<Navbar/>
+					<div className="jumbotron">
+						<h4>Login</h4>
+						{ error && <div className="alert alert-danger" dangerouslySetInnerHTML={ this.createMarkup( error ) }/> }
+						<form onSubmit={ this.onFormSubmit }>
+							<label className="form-group">
+								Username:
+								<input
+									type="text"
+									className="form-control"
+									name="username"
+									value={ username }
+									onChange={ this.handleOnChange }
+								/>
+							</label>
+							<br/>
+							<label className="form-group">
+								Password:
+								<input
+									type="password"
+									className="form-control"
+									name="password"
+									value={ password }
+									onChange={ this.handleOnChange }
+								/>
+							</label>
+							<br/>
+							<button className="btn btn-primary" type="submit">Login</button>
+						</form>
+					</div>
+				</React.Fragment>
+			)
+		}
+
 	}
 }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import NavLink from './NavLink';
 
 const Navbar = () => (
 	<nav className="navbar my-navbar navbar-expand-lg navbar-dark bg-dark">

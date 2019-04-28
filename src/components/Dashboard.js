@@ -3,7 +3,11 @@ import React from 'react';
 class Dashboard extends React.Component {
 	render() {
 		return (
-			<div>Welcome User!!</div>
+			<React.Component>
+				<div className="jumbotron">
+					<h4>Welcome User!!</h4>
+				</div>
+			</React.Component>
 		)
 	}
 }

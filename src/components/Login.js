@@ -48,11 +48,12 @@ class Login extends React.Component {
 							return;
 						}
 
-						sessionStorage.setItem( 'token', data.token );
-						console.warn( typeof data.token );
-
 						const userNiceName = ( data.user_nicename ) ? data.user_nicename : '';
 						const userEmail = ( data.user_email ) ? data.user_email : '';
+
+						localStorage.setItem( 'token', data.token );
+						localStorage.setItem( 'userName', userNiceName );
+
 						this.setState( { userNiceName, userEmail, loggedIn: true } )
 
 					} )
@@ -68,8 +69,11 @@ class Login extends React.Component {
 
 		const { username, password, userNiceName, loggedIn, error } = this.state;
 
-		if ( loggedIn || sessionStorage.getItem( 'token' ) ) {
-			return ( <Redirect to={`/dashboard${userNiceName}`} noThrow /> )
+		const user = ( userNiceName ) ? userNiceName : localStorage.getItem( 'userName' );
+		console.warn( localStorage.getItem(  'token') );
+
+		if ( loggedIn || localStorage.getItem( 'token' ) ) {
+			return ( <Redirect to={`/dashboard/${user}`} noThrow /> )
 		} else {
 			return (
 				<React.Fragment>

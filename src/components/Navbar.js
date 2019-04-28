@@ -1,24 +1,46 @@
 import React from 'react';
 import { Link } from "@reach/router";
 import NavLink from './NavLink';
+import { isLoggedIn, getUserName } from "./functions";
 
-const Navbar = () => (
-	<nav className="navbar my-navbar navbar-expand-lg navbar-dark bg-dark">
-		<Link className="navbar-brand" to="/">Home</Link>
-		<div >
-			<ul className="navbar-nav my-navbar-nav mr-auto">
-				<li className="nav-item">
-					<NavLink to="/login">Login</NavLink>
-				</li>
-				<li className="nav-item">
-					<NavLink to="/dashboard">Dashboard</NavLink>
-				</li>
-				<li className="nav-item">
-					<NavLink to="/logout">Logout</NavLink>
-				</li>
-			</ul>
-		</div>
-	</nav>
-);
+class Navbar extends React.Component {
+
+	constructor( props ) {
+		super( props );
+	}
+
+	handleLogout = () => {
+		localStorage.removeItem( 'token' );
+		window.location.href = '/';
+	};
+
+	render() {
+		const userName = ( getUserName() ) ? getUserName() : '';
+
+		return (
+			<nav className="navbar my-navbar navbar-expand-lg navbar-dark bg-dark">
+				<Link className="navbar-brand" to="/">Home</Link>
+				<div >
+					<ul className="navbar-nav my-navbar-nav mr-auto">
+						{ isLoggedIn() ? (
+							<React.Fragment>
+								<li className="nav-item">
+									<button onClick={ this.handleLogout }>Logout</button>
+								</li>
+								<li className="nav-item">
+									<NavLink to={ `/dashboard/${ userName }` }>Dashboard</NavLink>
+								</li>
+							</React.Fragment>
+						) : (
+							<li className="nav-item">
+								<NavLink to="/login">Login</NavLink>
+							</li>
+						) }
+					</ul>
+				</div>
+			</nav>
+		);
+	}
+}
 
 export default Navbar;

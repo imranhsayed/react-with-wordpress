@@ -27,6 +27,7 @@
     "qs": "^6.7.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-navigation": "^3.9.1",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2"
   },

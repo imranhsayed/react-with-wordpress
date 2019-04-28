@@ -49,6 +49,7 @@ class Login extends React.Component {
 						}
 
 						sessionStorage.setItem( 'token', data.token );
+						console.warn( typeof data.token );
 
 						const userNiceName = ( data.user_nicename ) ? data.user_nicename : '';
 						const userEmail = ( data.user_email ) ? data.user_email : '';
@@ -65,10 +66,10 @@ class Login extends React.Component {
 
 	render() {
 
-		const { username, password, userNiceName, userEmail, loggedIn, error } = this.state;
+		const { username, password, userNiceName, loggedIn, error } = this.state;
 
-		if ( loggedIn ) {
-			return ( <Redirect to={`/dashboard?user=${userNiceName}&email=${userEmail}`} /> )
+		if ( loggedIn || sessionStorage.getItem( 'token' ) ) {
+			return ( <Redirect to={`/dashboard${userNiceName}`} noThrow /> )
 		} else {
 			return (
 				<React.Fragment>

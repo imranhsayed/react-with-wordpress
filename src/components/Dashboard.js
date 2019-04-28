@@ -2,14 +2,19 @@ import React from 'react';
 import Navbar from "./Navbar";
 
 class Dashboard extends React.Component {
+
+	constructor( props ) {
+		super( props );
+	}
+
 	render() {
-		return (
-			<React.Component>
+		return(
+			<React.Fragment>
 				<Navbar/>
 				<div className="jumbotron">
-					<h4>Welcome User!!</h4>
+					<h4>Welcome {this.props.userName && this.props.userName }!!</h4>
 				</div>
-			</React.Component>
+			</React.Fragment>
 		)
 	}
 }

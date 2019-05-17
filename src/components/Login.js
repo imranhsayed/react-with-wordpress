@@ -38,12 +38,7 @@ class Login extends React.Component {
 
 		axios.post( `${siteUrl}/sign-in`, loginData )
 			.then( ( res ) => {
-
-				console.warn( 'came res' );
-				if ( 200 !== res.data.status ) {
-					this.setState( { error: res.data.errorMessage, loading: false } );
-				}
-
+				
 				const { token } = res.data;
 				const { user_nicename, user_email } = res.data.userData;
 

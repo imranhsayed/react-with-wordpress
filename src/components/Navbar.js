@@ -11,7 +11,7 @@ class Navbar extends React.Component {
 
 	handleLogout = () => {
 		localStorage.removeItem( 'token' );
-		window.location.href = '/';
+		window.location.href = '/login';
 	};
 
 	render() {

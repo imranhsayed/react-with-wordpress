@@ -8,7 +8,6 @@ class Dashboard extends React.Component {
 	}
 
 	render() {
-		console.warn( localStorage.getItem( 'token' ) );
 		return(
 			<React.Fragment>
 				<Navbar/>

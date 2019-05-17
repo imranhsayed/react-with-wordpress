@@ -26,8 +26,6 @@ app.use(bodyParser.json());
 
 app.post( '/sign-in', ( req, res ) => {
 
-	console.warn( req.body );
-
 	jwt.sign( req.body ,config.tokenSecret , { expiresIn: 3600 }, ( err, token ) => {
 		if ( ! token ) {
 			res.json({ success: false, error: 'Token could not be generated' });
@@ -39,11 +37,15 @@ app.post( '/sign-in', ( req, res ) => {
 					console.warn( response.data );
 					res.json( {
 						success: true,
+						status: 200,
 						token,
 						userData: response.data.user.data
 					} );
 				} )
-				.catch( err => console.warn( err ) );
+				.catch( err => {
+					const responseReceived = err.response.data;
+					res.status(404).json({ success: false, status: 400, errorMessage: responseReceived.message });
+				} );
 		}
 
 	} );

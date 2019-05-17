@@ -39,6 +39,10 @@ class Login extends React.Component {
 		axios.post( `${siteUrl}/sign-in`, loginData )
 			.then( ( res ) => {
 
+				console.warn( 'came res' );
+				if ( 200 !== res.data.status ) {
+					this.setState( { error: res.data.errorMessage, loading: false } );
+				}
 
 				const { token } = res.data;
 				const { user_nicename, user_email } = res.data.userData;
@@ -57,7 +61,10 @@ class Login extends React.Component {
 				this.setState( { userNiceName, userEmail, loggedIn: true, loading: false } )
 
 			} )
-			.catch( err => this.setState( { error: err.message, loading: false } ) );
+			.catch( err => {
+					const responseReceived = err.response.data;
+				{ this.setState({ error: responseReceived.errorMessage, loading: false } ) }
+			} );
 	};
 
 	handleOnChange = ( event ) => {
@@ -103,7 +110,7 @@ class Login extends React.Component {
 							</label>
 							<br/>
 							<button className="btn btn-primary mb-3" type="submit">Login</button>
-							<p>{ loading && <img src={Loader} alt="Loader"/> }</p>
+							<p>{ loading && <img src={Loader} className="loader" alt="Loader"/> }</p>
 						</form>
 					</div>
 				</React.Fragment>

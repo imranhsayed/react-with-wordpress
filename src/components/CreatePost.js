@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Loader from '../loader.gif';
 
 class CreatePost extends React.Component {
 
@@ -11,9 +12,15 @@ class CreatePost extends React.Component {
 			content: '',
 			userID: '',
 			token: '',
+			postCreated: false,
+			message: '',
 			loading: false
 		}
 	}
+
+	createMarkup = ( data ) => ({
+		__html: data
+	});
 
 	handleInputChange = ( event ) => {
 		this.setState({ [event.target.name]: event.target.value });
@@ -21,6 +28,7 @@ class CreatePost extends React.Component {
 
 	handleFormSubmit = ( event ) => {
 		event.preventDefault();
+		this.setState( { loading: true } );
 
 		const nodeServerURL = 'http://localhost:5000';
 
@@ -36,8 +44,18 @@ class CreatePost extends React.Component {
 		 * to create a new post on WordPress
 		 */
 		axios.post( `${nodeServerURL}/create-post`, formData )
-			.then( res => console.warn( res.data ) )
-			.catch( err => console.warn( err.response.data ) );
+			.then( res => {
+				console.warn( res.data );
+				this.setState( {
+					loading: false,
+					postCreated: res.data.success,
+					message: res.data.success ? 'New Post Created' : ''
+				} );
+			} )
+			.catch( err => {
+				console.warn( err.response.data );
+				this.setState( { loading: false, error: err.response.data.errorMessage } );
+			} );
 	};
 
 	componentDidMount() {
@@ -47,10 +65,16 @@ class CreatePost extends React.Component {
 	}
 
 	render() {
+
+		const { loading, message, postCreated } = this.state;
+
 		return(
 			<form onSubmit={ this.handleFormSubmit } className="mt-5" style={{maxWidth: '800px'}}>
 				<fieldset>
 					<legend className="mb-4">Create Post</legend>
+
+					{ message && <div className={ `alert ${ postCreated ? 'alert-success' : 'alert-danger' }` } dangerouslySetInnerHTML={ this.createMarkup( message ) }/> }
+
 					<div className="form-group">
 						<label htmlFor="title">Title</label>
 
@@ -64,6 +88,7 @@ class CreatePost extends React.Component {
 
 					<button type="submit" className="btn btn-secondary">Submit</button>
 				</fieldset>
+				{ loading && <img className="loader" src={Loader} alt="Loader"/> }
 			</form>
 		)
 	}

@@ -16,14 +16,6 @@ app.use( bodyParser.urlencoded( { extended: false } ) );
 // Parse application/json
 app.use(bodyParser.json());
 
-// jwt.verify(token, 'secret', function ( err, decoded ) {
-// 	if ( undefined !== decoded ) {
-// 		console.warn( 'Verified Successfully' );
-// 	} else {
-// 		console.warn( err );
-// 	}
-// });
-
 /**
  * Sign in user
  *
@@ -39,7 +31,7 @@ app.post( '/sign-in', ( req, res ) => {
 			// Make a login request.
 			axios.post( `${wordPressRestUrl}/user/login`, req.body )
 				.then( response => {
-					console.warn( response.data );
+
 					res.json( {
 						success: true,
 						status: 200,
@@ -63,7 +55,33 @@ app.post( '/sign-in', ( req, res ) => {
  */
 app.post( '/create-post', ( req, res ) => {
 
-	console.warn( req.body );
+	jwt.verify(req.body.token, config.tokenSecret, function ( err, decoded ) {
+	if ( undefined !== decoded ) {
+
+		const postData = {
+			user_id: req.body.userID,
+			title: req.body.title,
+			content: req.body.content,
+		};
+
+		// Make a create post request.
+		axios.post( `${wordPressRestUrl}/post/create`, postData )
+			.then( response => {
+
+				res.json( {
+					success: true,
+					status: 200,
+					userData: response.data
+				} );
+			} )
+			.catch( err => {
+				const responseReceived = err.response.data;
+				res.status(404).json({ success: false, status: 400, errorMessage: responseReceived.message });
+			} );
+	} else {
+		res.status( 400 ).json( { success: false, status: 400, errorMessage: 'Authorization failed'} );
+	}
+});
 } );
 
 app.listen( 5000, () => console.log( 'Listening on port 5000' ) );

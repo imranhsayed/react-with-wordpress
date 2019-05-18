@@ -15,7 +15,7 @@
 So you need to have this plugin installed on WordPress. The plugin's endpoint returns the user object and a jwt-token on success,
 which we can then store in localstorage and login the user on front React Application
 
-2.[jwt-verify-with-node](https://github.com/imranhsayed/react-with-wordpress/tree/jwt-verify-with-node)  
+2. [jwt-verify-with-node](https://github.com/imranhsayed/react-with-wordpress/tree/jwt-verify-with-node)  
 
 > A React(front end) + Node(back end) application. It uses `jwt.sign()` ( from `jwtwebtoken` npm package ) to generate a token using the username and password
 sent from front end( React ) and returns it as a response, which we then store in localstorage to login the user.

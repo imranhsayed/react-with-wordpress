@@ -2,6 +2,10 @@
 
 :fire: Example of react application to access WordPress REST API
 
+## Post Listings Demo :video_camera:
+
+![](render-posts.gif)
+
 ## Installation
 
 1. Clone this repo in `git clone https://github.com/imranhsayed/react-workshop`

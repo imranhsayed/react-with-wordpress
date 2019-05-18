@@ -22,14 +22,9 @@ module.exports = {
 				use: ['style-loader', 'css-loader'],
 			},
 			{
-				test: /\.(png|jp?g|svg)$/,
+				test: /\.(png|jp?g|svg|gif)$/,
 				use: [{
 					loader: "file-loader",
-					options: {
-						name: '[name].[ext]',
-						outputPath: 'images/',
-						publicPath: 'images/'
-					}
 				}]
 			}
 		]

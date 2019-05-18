@@ -7,3 +7,11 @@
 	margin: auto;
 	width: 100px;
 }
+
+.posts-container {
+	margin-left: 16px;
+}
+
+.post-content img{
+	width: 100%;
+}

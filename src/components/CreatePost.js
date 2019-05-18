@@ -30,8 +30,6 @@ class CreatePost extends React.Component {
 		event.preventDefault();
 		this.setState( { loading: true } );
 
-		const nodeServerURL = 'http://localhost:5000';
-
 		const formData = {
 			userID: this.state.userID,
 			title: this.state.title,
@@ -43,7 +41,7 @@ class CreatePost extends React.Component {
 		 * Make a post request to node server route '/create-post',
 		 * to create a new post on WordPress
 		 */
-		axios.post( `${nodeServerURL}/create-post`, formData )
+		axios.post( `/create-post`, formData )
 			.then( res => {
 				console.warn( res.data );
 				this.setState( {

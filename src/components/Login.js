@@ -27,8 +27,6 @@ class Login extends React.Component {
 	onFormSubmit = ( event ) => {
 		event.preventDefault();
 
-		const nodeServerURL = 'http://localhost:5000';
-
 		const loginData = {
 			username: this.state.username,
 			password: this.state.password
@@ -36,7 +34,7 @@ class Login extends React.Component {
 
 		this.setState( { loading: true } );
 
-		axios.post( `${nodeServerURL}/sign-in`, loginData )
+		axios.post( `/sign-in`, loginData )
 			.then( ( res ) => {
 
 				const { token } = res.data;

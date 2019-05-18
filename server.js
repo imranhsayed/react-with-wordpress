@@ -111,19 +111,19 @@ app.post( '/create-post', ( req, res ) => {
 
 app.get('/', (req, res) => {
 	res.render('index')
-})
+});
 
 app.get('/login', (req, res) => {
 	res.render('index')
-})
+});
 
 app.get('/dashboard/:userName', (req, res) => {
 	res.render('index')
-})
+});
 
 app.get('/post/:id', (req, res) => {
 	res.render('index')
-})
+});
 
 
 app.listen( process.env.PORT || 5000, () => console.log( 'Listening on port 5000' ) );

@@ -8,7 +8,6 @@
     "webpack-dev-server": "webpack-dev-server",
     "dev:client": "webpack-dev-server --mode=development",
     "dev:server": "nodemon server.js",
-    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "prod": "webpack --mode=production"
   },
   "repository": {

@@ -1,5 +1,5 @@
 module.exports = {
 	tokenSecret: 'SECRET',
-	wordPressUrl: 'http://localhost:8888/wordpress',
+	wordPressUrl: 'https://orionhive.com',
 	wordPressRestNameSpace: '/wp-json/wp/v2/rae'
 };

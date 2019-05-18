@@ -4,17 +4,43 @@ const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 const config = require( './config' );
 const axios = require( 'axios' );
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackConfig = require('./webpack.config');
+const path = require('path')
 
-const wordPressRestUrl = `${config.wordPressUrl}${config.wordPressRestNameSpace}`;
+const wordPressRestUrl = `${config.wordPressUrl}/${config.wordPressRestNameSpace}`;
+
+console.log(wordPressRestUrl, 'wordpressurl')
 
 const app = express();
 app.use( cors() );
+
+// Setting Paths
+app.use('/static', express.static(path.join(__dirname, '/')));
+
+// Setting views of the app
+app.set('views', path.join(__dirname, './'));
+app.set('view engine', 'pug');
 
 // Parse application/x-www-form-urlencoded
 app.use( bodyParser.urlencoded( { extended: false } ) );
 
 // Parse application/json
 app.use(bodyParser.json());
+
+// Adding webpack build
+// Middleware of webpack
+if (process.env.NODE_ENV === 'development') {
+	console.log('in webpack hot middleware');
+	const compiler = webpack(webpackConfig);
+
+	app.use(webpackDevMiddleware(compiler, {
+		noInfo: true,
+		publicPath: webpackConfig.output.publicPath,
+	}));
+}
+
 
 /**
  * Sign in user
@@ -31,7 +57,6 @@ app.post( '/sign-in', ( req, res ) => {
 			// Make a login request.
 			axios.post( `${wordPressRestUrl}/user/login`, req.body )
 				.then( response => {
-
 					res.json( {
 						success: true,
 						status: 200,
@@ -83,5 +108,24 @@ app.post( '/create-post', ( req, res ) => {
 	}
 });
 } );
+
+app.get('/', (req, res) => {
+	res.render('index')
+})
+
+app.get('/login', (req, res) => {
+	res.render('index')
+})
+
+app.get('/dashboard/:userName', (req, res) => {
+	res.render('index')
+})
+
+app.get('/post/:id', (req, res) => {
+	res.render('index')
+})
+
+
+
 
 app.listen( 5000, () => console.log( 'Listening on port 5000' ) );

@@ -23,7 +23,7 @@ class Home extends React.Component {
 	});
 
 	componentDidMount() {
-		const wordPressSiteURL = 'http://localhost:8888/wordpress';
+		const wordPressSiteURL = 'https://orionhive.com';
 		this.setState( { loading: true }, () => {
 			axios.get( `${wordPressSiteURL}/wp-json/wp/v2/posts/` )
 				.then( res => {

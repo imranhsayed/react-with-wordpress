@@ -38,9 +38,9 @@ class Login extends React.Component {
 
 		axios.post( `${siteUrl}/sign-in`, loginData )
 			.then( ( res ) => {
-				
+
 				const { token } = res.data;
-				const { user_nicename, user_email } = res.data.userData;
+				const { user_nicename, user_email, ID } = res.data.userData;
 
 				if (  undefined === token ) {
 					this.setState( { error: data.message, loading: false } );
@@ -49,9 +49,11 @@ class Login extends React.Component {
 
 				const userNiceName = ( user_nicename ) ? user_nicename : '';
 				const userEmail = ( user_email ) ? user_email : '';
+				const userID = ID ? ID : '';
 
 				localStorage.setItem( 'token', token );
 				localStorage.setItem( 'userName', userNiceName );
+				localStorage.setItem( 'userID', userID );
 
 				this.setState( { userNiceName, userEmail, loggedIn: true, loading: false } )
 

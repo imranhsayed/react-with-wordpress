@@ -28,7 +28,7 @@ class Navbar extends React.Component {
 									<NavLink to={ `/dashboard/${ userName }` }>Dashboard</NavLink>
 								</li>
 								<li className="nav-item">
-									<button onClick={ this.handleLogout }>Logout</button>
+									<button className="btn btn-secondary" onClick={ this.handleLogout }>Logout</button>
 								</li>
 							</React.Fragment>
 						) : (

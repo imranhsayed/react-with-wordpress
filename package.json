@@ -48,13 +48,13 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
-	"html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^3.2.0",
     "path": "^0.12.7",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"
   },
-  "engines" : {
-	"node" : "8.12.0"
+  "engines": {
+    "node": "8.12.0"
   }
 }

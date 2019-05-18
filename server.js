@@ -24,6 +24,11 @@ app.use(bodyParser.json());
 // 	}
 // });
 
+/**
+ * Sign in user
+ *
+ * @route http://localhost:5000/sign-in
+ */
 app.post( '/sign-in', ( req, res ) => {
 
 	jwt.sign( req.body ,config.tokenSecret , { expiresIn: 3600 }, ( err, token ) => {
@@ -49,6 +54,16 @@ app.post( '/sign-in', ( req, res ) => {
 		}
 
 	} );
+} );
+
+/**
+ * Create a new post
+ *
+ * @route http://localhost:5000/create-post
+ */
+app.post( '/create-post', ( req, res ) => {
+
+	console.warn( req.body );
 } );
 
 app.listen( 5000, () => console.log( 'Listening on port 5000' ) );

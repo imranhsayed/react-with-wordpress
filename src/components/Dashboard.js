@@ -14,7 +14,6 @@ class Dashboard extends React.Component {
 				<Navbar/>
 				<div className="jumbotron">
 					<h4>Welcome {this.props.userName && this.props.userName }!!</h4>
-
 					<CreatePost/>
 				</div>
 			</React.Fragment>

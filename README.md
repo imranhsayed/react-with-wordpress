@@ -14,7 +14,7 @@
 
 
 ## Branches
-1. [login-with-jwt-wordpress-plugin](https://github.com/imranhsayed/react-with-wordpress/tree/login-with-jwt-wordpress-plugin)
+### 1.[login-with-jwt-wordpress-plugin](https://github.com/imranhsayed/react-with-wordpress/tree/login-with-jwt-wordpress-plugin)
 
 > A React App where you can login using the endpoint provided by `JWT Authentication for WP-API` WordPress Plugin.
 So you need to have this plugin installed on WordPress. The plugin's endpoint returns the user object and a jwt-token on success,
@@ -64,7 +64,7 @@ your request
 
 ```
 
-2. [jwt-verify-with-node](https://github.com/imranhsayed/react-with-wordpress/tree/jwt-verify-with-node)  
+### 2. [jwt-verify-with-node](https://github.com/imranhsayed/react-with-wordpress/tree/jwt-verify-with-node)  
 
 > A React(front end) + Node(back end) application. It uses `jwt.sign()` ( from `jwtwebtoken` npm package ) to generate a token using the username and password
 sent from front end( React ) and returns it as a response, which we then store in localstorage to login the user.

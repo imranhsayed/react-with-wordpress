@@ -14,7 +14,7 @@
 
 
 ## Branches
-### 1.[login-with-jwt-wordpress-plugin](https://github.com/imranhsayed/react-with-wordpress/tree/login-with-jwt-wordpress-plugin)
+### 1. [login-with-jwt-wordpress-plugin](https://github.com/imranhsayed/react-with-wordpress/tree/login-with-jwt-wordpress-plugin)
 
 > A React App where you can login using the endpoint provided by `JWT Authentication for WP-API` WordPress Plugin.
 So you need to have this plugin installed on WordPress. The plugin's endpoint returns the user object and a jwt-token on success,
@@ -78,14 +78,14 @@ The node endpoint verifies the token and then makes a request to WordPress REST 
 new post id, or error if any.  
 
 ## Commands
+1. Branch [jwt-verify-with-node](https://github.com/imranhsayed/react-with-wordpress/tree/jwt-verify-with-node) and
+[login-with-jwt-wordpress-plugin](https://github.com/imranhsayed/react-with-wordpress/tree/login-with-jwt-wordpress-plugin)
 
 - `dev` Runs webpack dev server for development ( in watch mode )
-- `prod` Runs webpack in production mode
 
+2. [build-app-for-heroku](https://github.com/imranhsayed/react-with-wordpress/tree/build-app-for-heroku) and [master](https://github.com/imranhsayed/react-with-wordpress)
+- `start` Runs node server for development ( in watch mode ). The server.js sends all front end route request to index.html and then all front end route requests is handled by reach router
 
-
-## Commands
-
-- `dev` Runs webpack dev server for development ( in watch mode )
+Common
 - `prod` Runs webpack in production mode
 

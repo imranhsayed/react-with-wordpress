@@ -55,7 +55,7 @@ define('JWT_AUTH_CORS_ENABLE', true);
 
 iii. Now you can make a request to `/wp-json/jwt-auth/v1/token` REST API provided by the plugin. You need to pass 
 username and password and it returns a user object and token . You can save the token in localstorage and send it in the headers
-of your protected route requests ( e.g. `/wp-json/wp/v2/posts` )
+of your protected route requests ( e.g. [Create Post](https://developer.wordpress.org/rest-api/reference/posts/#create-a-post) `/wp-json/wp/v2/posts` ) 
 
 iiv. So whenever you send a request to WordPress REST API for your protected routes, you send the token received in the headers of
 your request

@@ -45,9 +45,11 @@ define('JWT_AUTH_SECRET_KEY', '&BZd]N-ghz|hbH`=%~a5z(`mR=n%7#8-Iz@KoqtDhQ6(8h$og
 define('JWT_AUTH_CORS_ENABLE', true);
 ```
 
-iii. Now you can make a request to 
+iii. Now you can make a request to `/wp-json/jwt-auth/v1/token` REST API provided by the plugin. You need to pass 
+username and password and it returns a user object and token . You can save the token in localstorage and send it in the headers
+of your protected route requests ( e.g. `/wp-json/wp/v2/posts` )
 
-iiv. Now whenever you send a request to WordPress REST API for your protected routes, you send the token received in the headers of
+iiv. So whenever you send a request to WordPress REST API for your protected routes, you send the token received in the headers of
 your request
 ```
 {
@@ -58,7 +60,7 @@ your request
 
 ```
 
-2.[jwt-verify-with-node](https://github.com/imranhsayed/react-with-wordpress/tree/jwt-verify-with-node)  
+2. [jwt-verify-with-node](https://github.com/imranhsayed/react-with-wordpress/tree/jwt-verify-with-node)  
 
 > A React(front end) + Node(back end) application. It uses `jwt.sign()` ( from `jwtwebtoken` npm package ) to generate a token using the username and password
 sent from front end( React ) and returns it as a response, which we then store in localstorage to login the user.

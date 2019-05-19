@@ -16,6 +16,48 @@
 So you need to have this plugin installed on WordPress. The plugin's endpoint returns the user object and a jwt-token on success,
 which we can then store in localstorage and login the user on front React Application
 
+### Steps
+* You need to install and activate [JWT Authentication for WP REST API](https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/) plugin on you WordPress site
+* Then you need to configure it by adding these:
+
+i. Add the last three lines in your WordPress `.htaccess` file as shown:
+```ruby
+# BEGIN WordPress
+   <IfModule mod_rewrite.c>
+   RewriteEngine On
+   RewriteBase /wordpress/
+   RewriteRule ^index\.php$ - [L]
+   RewriteCond %{REQUEST_FILENAME} !-f
+   RewriteCond %{REQUEST_FILENAME} !-d
+   RewriteRule . /wordpress/index.php [L]
+   
+   
+   RewriteCond %{HTTP:Authorization} ^(.*)
+   RewriteRule ^(.*) - [E=HTTP_AUTHORIZATION:%1]
+   SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+   
+   </IfModule>
+```
+ii. Add the following in your `wp-config.php` Wordpress file. You can choose your own secret key.
+
+```ruby
+define('JWT_AUTH_SECRET_KEY', '&BZd]N-ghz|hbH`=%~a5z(`mR=n%7#8-Iz@KoqtDhQ6(8h$og%-IbI#>N*T`s9Dg');
+define('JWT_AUTH_CORS_ENABLE', true);
+```
+
+iii. Now you can make a request to 
+
+iiv. Now whenever you send a request to WordPress REST API for your protected routes, you send the token received in the headers of
+your request
+```
+{
+	'Accept': 'application/json',
+	'Content-Type': 'application/json',
+	'Authorization': `Bearer putTokenReceivedHere`
+}
+
+```
+
 2.[jwt-verify-with-node](https://github.com/imranhsayed/react-with-wordpress/tree/jwt-verify-with-node)  
 
 > A React(front end) + Node(back end) application. It uses `jwt.sign()` ( from `jwtwebtoken` npm package ) to generate a token using the username and password

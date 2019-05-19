@@ -71,6 +71,7 @@ class Login extends React.Component {
 	render() {
 
 		const { username, password, userNiceName, loggedIn, error, loading } = this.state;
+		console.warn( 'came', this.state );
 
 		const user = ( userNiceName ) ? userNiceName : localStorage.getItem( 'userName' );
 		console.warn( localStorage.getItem(  'token') );

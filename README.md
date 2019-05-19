@@ -6,6 +6,10 @@
 
 ![](render-posts.gif)
 
+## Create a new Post Demo :video_camera:
+
+![](create-post.gif)
+
 ## Installation
 
 1. Clone this repo in `git clone https://github.com/imranhsayed/react-workshop`

@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from "./Navbar";
 import { Redirect } from "@reach/router";
+import Loader from "../loader.gif";
 
 class Login extends React.Component {
 
@@ -109,7 +110,7 @@ class Login extends React.Component {
 							</label>
 							<br/>
 							<button className="btn btn-primary mb-3" type="submit">Login</button>
-							<p>{ loading && 'Processing...' }</p>
+							{ loading && <img className="loader" src={Loader} alt="Loader"/> }
 						</form>
 					</div>
 				</React.Fragment>

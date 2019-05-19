@@ -82,13 +82,14 @@ The node endpoint verifies the token and then makes a request to WordPress REST 
 new post id, or error if any.  
 
 ## Commands
-1. Branch [jwt-verify-with-node](https://github.com/imranhsayed/react-with-wordpress/tree/jwt-verify-with-node) and
+
+1. Branch [master](https://github.com/imranhsayed/react-with-wordpress) and [build-app-for-heroku](https://github.com/imranhsayed/react-with-wordpress/tree/build-app-for-heroku)
+- `start` Runs node server for development ( in watch mode ). The server.js sends all front end route request to index.html and then all front end route requests is handled by reach router
+
+2. Branch [jwt-verify-with-node](https://github.com/imranhsayed/react-with-wordpress/tree/jwt-verify-with-node) and
 [login-with-jwt-wordpress-plugin](https://github.com/imranhsayed/react-with-wordpress/tree/login-with-jwt-wordpress-plugin)
 
 - `dev` Runs webpack dev server for development ( in watch mode )
-
-2. [build-app-for-heroku](https://github.com/imranhsayed/react-with-wordpress/tree/build-app-for-heroku) and [master](https://github.com/imranhsayed/react-with-wordpress)
-- `start` Runs node server for development ( in watch mode ). The server.js sends all front end route request to index.html and then all front end route requests is handled by reach router
 
 Common
 - `prod` Runs webpack in production mode

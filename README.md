@@ -68,6 +68,8 @@ your request
 
 ```
 
+This repo also demonstrates how to create posts in React Application by sending request to protected endpoints ( passing the token in the header )
+
 ### 2. [jwt-verify-with-node](https://github.com/imranhsayed/react-with-wordpress/tree/jwt-verify-with-node)  
 
 > A React(front end) + Node(back end) application. It uses `jwt.sign()` ( from `jwtwebtoken` npm package ) to generate a token using the username and password

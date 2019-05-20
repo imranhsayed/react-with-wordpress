@@ -19,11 +19,13 @@ class Navbar extends React.Component {
 
 		return (
 			<nav className="navbar my-navbar navbar-expand-lg navbar-dark bg-dark">
-				<Link className="navbar-brand" to="/">Home</Link>
 				<div >
 					<ul className="navbar-nav my-navbar-nav mr-auto">
 						{ isLoggedIn() ? (
 							<React.Fragment>
+								<li className="nav-item">
+									<NavLink to="/">Home</NavLink>
+								</li>
 								<li className="nav-item">
 									<NavLink to={ `/dashboard/${ userName }` }>Dashboard</NavLink>
 								</li>

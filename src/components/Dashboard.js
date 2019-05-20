@@ -14,7 +14,7 @@ class Dashboard extends React.Component {
 		return(
 			<React.Fragment>
 				<Navbar/>
-				<div className="jumbotron">
+				<div className="jumbotron" style={{ height: '100vh' }}>
 					<h4>Welcome {this.props.userName && this.props.userName }!!</h4>
 					<CreatePost/>
 				</div>

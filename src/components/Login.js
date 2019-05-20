@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from "./Navbar";
 import { Redirect } from "@reach/router";
 import Loader from "../loader.gif";
+import axios from 'axios';
 
 class Login extends React.Component {
 
@@ -23,46 +24,42 @@ class Login extends React.Component {
 		__html: data
 	});
 
-	onFormSubmit = ( event ) => {
+	onFormSubmit = () => {
 		event.preventDefault();
 
 		const siteUrl = 'http://localhost:8888/wordpress';
 
 		const loginData = {
 			username: this.state.username,
-			password: this.state.password
+			password: this.state.password,
 		};
 
-		this.setState( { loading: true } );
+		this.setState( { loading: true }, () => {
+			axios.post( `${siteUrl}/wp-json/jwt-auth/v1/token`, loginData )
+				.then( res => {
 
-		fetch( `${siteUrl}/wp-json/jwt-auth/v1/token`, {
-			method: 'POST',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify( loginData )
-		} )
-			.then( ( res ) => {
-				res.json()
-					.then( ( data ) => {
+					if ( undefined === res.data.token ) {
+						this.setState( { error: res.data.message, loading: false } );
+						return;
+					}
 
-						if (  undefined === data.token ) {
-							this.setState( { error: data.message, loading: false } );
-							return;
-						}
+					const { token, user_nicename, user_email } = res.data;
 
-						const userNiceName = ( data.user_nicename ) ? data.user_nicename : '';
-						const userEmail = ( data.user_email ) ? data.user_email : '';
+					localStorage.setItem( 'token', token );
+					localStorage.setItem( 'userName', user_nicename );
 
-						localStorage.setItem( 'token', data.token );
-						localStorage.setItem( 'userName', userNiceName );
-
-						this.setState( { userNiceName, userEmail, loggedIn: true, loading: false } )
-
+					this.setState( {
+						loading: false,
+						token: token,
+						userNiceName: user_nicename,
+						userEmail: user_email,
+						loggedIn: true
 					} )
-			} )
-			.catch( err => this.setState( { error: err.message, loading: false } ) );
+				} )
+				.catch( err => {
+					this.setState( { error: err.response.data, loading: false } );
+				} )
+		} )
 	};
 
 	handleOnChange = ( event ) => {
@@ -72,10 +69,8 @@ class Login extends React.Component {
 	render() {
 
 		const { username, password, userNiceName, loggedIn, error, loading } = this.state;
-		console.warn( 'came', this.state );
 
 		const user = ( userNiceName ) ? userNiceName : localStorage.getItem( 'userName' );
-		console.warn( localStorage.getItem(  'token') );
 
 		if ( loggedIn || localStorage.getItem( 'token' ) ) {
 			return ( <Redirect to={`/dashboard/${user}`} noThrow /> )

@@ -21,13 +21,17 @@
   "homepage": "https://github.com/imranhsayed/react-workshop#readme",
   "dependencies": {
     "@reach/router": "^1.2.1",
+    "axios": "^0.18.0",
     "css-loader": "^2.1.1",
     "file-loader": "^3.0.1",
     "image-webpack-loader": "^4.6.0",
+    "moment": "^2.24.0",
     "qs": "^6.7.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-moment": "^0.9.2",
     "react-navigation": "^3.9.1",
+    "react-render-html": "^0.6.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2"
   },

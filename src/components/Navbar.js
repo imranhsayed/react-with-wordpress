@@ -21,11 +21,11 @@ class Navbar extends React.Component {
 			<nav className="navbar my-navbar navbar-expand-lg navbar-dark bg-dark">
 				<div >
 					<ul className="navbar-nav my-navbar-nav mr-auto">
+						<li className="nav-item">
+							<NavLink to="/">Home</NavLink>
+						</li>
 						{ isLoggedIn() ? (
 							<React.Fragment>
-								<li className="nav-item">
-									<NavLink to="/">Home</NavLink>
-								</li>
 								<li className="nav-item">
 									<NavLink to={ `/dashboard/${ userName }` }>Dashboard</NavLink>
 								</li>

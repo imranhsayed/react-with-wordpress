@@ -12,7 +12,7 @@
 
 ## Installation
 
-1. Clone this repo in `git clone https://github.com/imranhsayed/react-workshop`
+1. Clone this repo in `git clone https://github.com/imranhsayed/react-with-wordpress`
 
 2. Run `npm install`
 

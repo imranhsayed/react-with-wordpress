@@ -27,6 +27,7 @@
 		"image-webpack-loader": "^4.6.0",
 		"moment": "^2.24.0",
 		"qs": "^6.7.0",
+		"querystringify": "^2.0.0",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
 		"react-moment": "^0.9.2",

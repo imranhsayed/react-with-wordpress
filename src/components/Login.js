@@ -58,7 +58,7 @@ class Login extends React.Component {
 					} )
 				} )
 				.catch( err => {
-					this.setState( { error: err.response.data, loading: false } );
+					this.setState( { error: err.response.data.message, loading: false } );
 				} )
 		} )
 	};

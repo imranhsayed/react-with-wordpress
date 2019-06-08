@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import { Redirect } from "@reach/router";
 import Loader from "../loader.gif";
 import axios from 'axios';
+import clientConfig from '../client-config';
 
 class Login extends React.Component {
 
@@ -24,10 +25,10 @@ class Login extends React.Component {
 		__html: data
 	});
 
-	onFormSubmit = () => {
+	onFormSubmit = ( event ) => {
 		event.preventDefault();
 
-		const siteUrl = 'http://localhost:8888/wordpress';
+		const siteUrl = clientConfig.siteUrl;
 
 		const loginData = {
 			username: this.state.username,
@@ -57,7 +58,8 @@ class Login extends React.Component {
 					} )
 				} )
 				.catch( err => {
-					this.setState( { error: err.response.data, loading: false } );
+
+					this.setState( { error: err.response.data.message, loading: false } );
 				} )
 		} )
 	};

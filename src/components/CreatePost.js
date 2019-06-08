@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Loader from '../loader.gif';
+import clientConfig from '../client-config';
 
 class CreatePost extends React.Component {
 
@@ -37,7 +38,7 @@ class CreatePost extends React.Component {
 			status: 'publish'
 		};
 
-		const wordPressSiteUrl = 'http://localhost:8888/wordpress';
+		const wordPressSiteUrl = clientConfig.siteUrl;
 		const authToken = localStorage.getItem( 'token' );
 
 		/**

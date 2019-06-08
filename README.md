@@ -6,8 +6,21 @@
 
 1. Clone this repo in `git clone https://github.com/imranhsayed/react-with-wordpress/`
 
-2. Run `npm install`
+2. `git checkout branchname`
 
+3. Run `npm install`
+
+## Configure
+
+Add your wordPress siteUrl in `src/client-config.js`
+
+```ruby
+const clientConfig = {
+	siteUrl: 'http://localhost:8888/wordpress'
+};
+
+export default clientConfig;
+``` 
 
 ## Branches
 1. [login-with-jwt-wordpress-plugin](https://github.com/imranhsayed/react-with-wordpress/tree/login-with-jwt-wordpress-plugin)

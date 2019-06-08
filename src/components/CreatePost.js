@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Loader from '../loader.gif';
+import clientConfig from '../client-config';
 
 class CreatePost extends React.Component {
 
@@ -31,28 +32,34 @@ class CreatePost extends React.Component {
 		this.setState( { loading: true } );
 
 		const formData = {
-			userID: this.state.userID,
+			author: this.state.userID,
 			title: this.state.title,
 			content: this.state.content,
-			token: this.state.token
+			status: 'publish'
 		};
+
+		const wordPressSiteUrl = clientConfig.siteUrl;
+		const authToken = localStorage.getItem( 'token' );
 
 		/**
 		 * Make a post request to node server route '/create-post',
 		 * to create a new post on WordPress
 		 */
-		axios.post( `/create-post`, formData )
+		axios.post( `${wordPressSiteUrl}/wp-json/wp/v2/posts`, formData, {
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${authToken}`
+			}
+		} )
 			.then( res => {
-				console.warn( res.data );
 				this.setState( {
 					loading: false,
-					postCreated: res.data.success,
-					message: res.data.success ? 'New Post Created' : ''
+					postCreated: !! res.data.id,
+					message: res.data.id ? 'New Post Created' : ''
 				} );
 			} )
 			.catch( err => {
-				console.warn( err.response.data );
-				this.setState( { loading: false, error: err.response.data.errorMessage } );
+				this.setState( { loading: false, message: err.response.data.message } );
 			} );
 	};
 
@@ -76,7 +83,7 @@ class CreatePost extends React.Component {
 					<div className="form-group">
 						<label htmlFor="title">Title</label>
 
-							<input type="text" name="title" onChange={ this.handleInputChange } className="form-control" id="title"/>
+						<input type="text" name="title" onChange={ this.handleInputChange } className="form-control" id="title"/>
 
 					</div>
 					<div className="form-group">
@@ -91,5 +98,4 @@ class CreatePost extends React.Component {
 		)
 	}
 }
-
-export default CreatePost
+export default CreatePost;

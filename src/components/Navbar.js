@@ -11,7 +11,7 @@ class Navbar extends React.Component {
 
 	handleLogout = () => {
 		localStorage.removeItem( 'token' );
-		window.location.href = '/login';
+		window.location.href = '/';
 	};
 
 	render() {
@@ -19,16 +19,18 @@ class Navbar extends React.Component {
 
 		return (
 			<nav className="navbar my-navbar navbar-expand-lg navbar-dark bg-dark">
-				<Link className="navbar-brand" to="/">Home</Link>
 				<div >
 					<ul className="navbar-nav my-navbar-nav mr-auto">
+						<li className="nav-item">
+							<NavLink to="/">Home</NavLink>
+						</li>
 						{ isLoggedIn() ? (
 							<React.Fragment>
 								<li className="nav-item">
 									<NavLink to={ `/dashboard/${ userName }` }>Dashboard</NavLink>
 								</li>
 								<li className="nav-item">
-									<button className="btn btn-secondary" onClick={ this.handleLogout }>Logout</button>
+									<button onClick={ this.handleLogout } className="btn btn-secondary ml-3">Logout</button>
 								</li>
 							</React.Fragment>
 						) : (

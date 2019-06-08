@@ -1,8 +1,9 @@
 import React from 'react';
 import Navbar from "./Navbar";
 import { Redirect } from "@reach/router";
+import Loader from "../loader.gif";
 import axios from 'axios';
-import Loader from '../loader.gif';
+import clientConfig from '../client-config';
 
 class Login extends React.Component {
 
@@ -24,42 +25,42 @@ class Login extends React.Component {
 		__html: data
 	});
 
-	onFormSubmit = ( event ) => {
+	onFormSubmit = () => {
 		event.preventDefault();
+
+		const siteUrl = clientConfig.siteUrl;
 
 		const loginData = {
 			username: this.state.username,
-			password: this.state.password
+			password: this.state.password,
 		};
 
-		this.setState( { loading: true } );
+		this.setState( { loading: true }, () => {
+			axios.post( `${siteUrl}/wp-json/jwt-auth/v1/token`, loginData )
+				.then( res => {
 
-		axios.post( `/sign-in`, loginData )
-			.then( ( res ) => {
+					if ( undefined === res.data.token ) {
+						this.setState( { error: res.data.message, loading: false } );
+						return;
+					}
 
-				const { token } = res.data;
-				const { user_nicename, user_email, ID } = res.data.userData;
+					const { token, user_nicename, user_email } = res.data;
 
-				if (  undefined === token ) {
-					this.setState( { error: data.message, loading: false } );
-					return;
-				}
+					localStorage.setItem( 'token', token );
+					localStorage.setItem( 'userName', user_nicename );
 
-				const userNiceName = ( user_nicename ) ? user_nicename : '';
-				const userEmail = ( user_email ) ? user_email : '';
-				const userID = ID ? ID : '';
-
-				localStorage.setItem( 'token', token );
-				localStorage.setItem( 'userName', userNiceName );
-				localStorage.setItem( 'userID', userID );
-
-				this.setState( { userNiceName, userEmail, loggedIn: true, loading: false } )
-
-			} )
-			.catch( err => {
-					const responseReceived = err.response.data;
-				{ this.setState({ error: responseReceived.errorMessage, loading: false } ) }
-			} );
+					this.setState( {
+						loading: false,
+						token: token,
+						userNiceName: user_nicename,
+						userEmail: user_email,
+						loggedIn: true
+					} )
+				} )
+				.catch( err => {
+					this.setState( { error: err.response.data, loading: false } );
+				} )
+		} )
 	};
 
 	handleOnChange = ( event ) => {
@@ -78,7 +79,7 @@ class Login extends React.Component {
 			return (
 				<React.Fragment>
 					<Navbar/>
-					<div className="jumbotron">
+					<div className="jumbotron" style={{ height: '100vh' }}>
 						<h4>Login</h4>
 						{ error && <div className="alert alert-danger" dangerouslySetInnerHTML={ this.createMarkup( error ) }/> }
 						<form onSubmit={ this.onFormSubmit }>
@@ -105,7 +106,7 @@ class Login extends React.Component {
 							</label>
 							<br/>
 							<button className="btn btn-primary mb-3" type="submit">Login</button>
-							<p>{ loading && <img src={Loader} className="loader" alt="Loader"/> }</p>
+							{ loading && <img className="loader" src={Loader} alt="Loader"/> }
 						</form>
 					</div>
 				</React.Fragment>

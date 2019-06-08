@@ -5,6 +5,7 @@ import renderHTML from "react-render-html";
 import Moment from "react-moment";
 import Loader from "../loader.gif";
 import axios from "axios";
+import clientConfig from "../client-config";
 
 class SinglePost extends React.Component {
 
@@ -23,7 +24,7 @@ class SinglePost extends React.Component {
 	});
 
 	componentDidMount() {
-		const wordPressSiteURL = 'http://localhost:8888/wordpress';
+		const wordPressSiteURL = clientConfig.siteUrl;
 		console.warn( this.props.id );
 
 		this.setState( { loading: true }, () => {
@@ -52,7 +53,7 @@ class SinglePost extends React.Component {
 					<div className="mt-5 posts-container">
 						<div key={post.id} className="card border-dark mb-3" style={{maxWidth: '50rem'}}>
 							<div className="card-header">
-									{renderHTML( post.title.rendered )}
+								{renderHTML( post.title.rendered )}
 							</div>
 							<div className="card-body">
 								<div className="card-text post-content">{ renderHTML( post.content.rendered ) }</div>

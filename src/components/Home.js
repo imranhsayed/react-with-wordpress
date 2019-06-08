@@ -5,6 +5,7 @@ import Loader from "../loader.gif";
 import renderHTML from 'react-render-html';
 import Moment from 'react-moment';
 import { Link } from '@reach/router';
+import clientConfig from '../client-config';
 
 class Home extends React.Component {
 
@@ -23,7 +24,7 @@ class Home extends React.Component {
 	});
 
 	componentDidMount() {
-		const wordPressSiteURL = 'https://orionhive.com';
+		const wordPressSiteURL = clientConfig.siteUrl;
 		this.setState( { loading: true }, () => {
 			axios.get( `${wordPressSiteURL}/wp-json/wp/v2/posts/` )
 				.then( res => {
@@ -43,7 +44,7 @@ class Home extends React.Component {
 
 		return(
 			<React.Fragment>
-			<Navbar/>
+				<Navbar/>
 				{ error && <div className="alert alert-danger" dangerouslySetInnerHTML={ this.createMarkup( error ) }/> }
 				{ posts.length ? (
 					<div className="mt-5 posts-container">

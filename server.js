@@ -65,11 +65,17 @@ app.post( '/create-post', ( req, res ) => {
 			token: req.body.token
 		};
 		var config = {
-			headers: {'Authorization': "bearer " + req.body.token}
+			headers: {'Authorization': "Bearer " + req.body.token}
 		};
 
+		const instance = axios.create({
+			baseURL: `${wordPressRestUrl}`,
+			timeout: 1000,
+			headers: {'Authorization': "Bearer " + req.body.token}
+		});
+
 		// Make a create post request.
-		axios.post( `${wordPressRestUrl}/post/create`, postData )
+		instance.post( `${wordPressRestUrl}/post/create`, postData )
 			.then( response => {
 
 				res.json( {

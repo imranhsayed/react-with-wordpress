@@ -64,9 +64,6 @@ app.post( '/create-post', ( req, res ) => {
 			content: req.body.content,
 			token: req.body.token
 		};
-		var config = {
-			headers: {'Authorization': "Bearer " + req.body.token}
-		};
 
 		const instance = axios.create({
 			baseURL: `${wordPressRestUrl}`,

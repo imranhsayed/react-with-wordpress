@@ -3,6 +3,8 @@ import './style.css';
 import Home from "./components/Home";
 import { Router } from '@reach/router';
 import Post from './components/Post';
+import Login from "./components/Login";
+import Dashboard from "./components/Dashboard";
 
 class App extends React.Component {
 
@@ -11,6 +13,8 @@ class App extends React.Component {
 			<Router>
 				<Home path="/"/>
 				<Post path="/post/:id"/>
+				<Login path="/login"/>
+				<Dashboard path="/dashboard"/>
 			</Router>
 		);
 	}

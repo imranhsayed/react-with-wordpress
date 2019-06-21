@@ -6,6 +6,8 @@
 	"scripts": {
 		"webpack-dev-server": "webpack-dev-server",
 		"dev": "webpack-dev-server --mode=development",
+		"server": "nodemon server.js",
+		"start": "concurrently \"npm run server\" \"npm run dev\"",
 		"prod": "webpack --mode=production"
 	},
 	"repository": {
@@ -22,8 +24,11 @@
 	"dependencies": {
 		"@reach/router": "^1.2.1",
 		"axios": "^0.19.0",
+		"concurrently": "^4.1.0",
 		"css-loader": "^2.1.1",
+		"express": "^4.17.1",
 		"file-loader": "^3.0.1",
+		"jsonwebtoken": "^8.5.1",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
 		"react-render-html": "^0.6.0",

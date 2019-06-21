@@ -2,6 +2,7 @@
 *.log
 npm-debug.log
 yarn-error.log
+client-config.js
 .DS_Store
 build/
 node_modules/

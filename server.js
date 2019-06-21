@@ -29,7 +29,7 @@ app.post( '/sign-in', ( req, res ) => {
 		} else {
 
 			// Make a login request.
-			axios.post( `${wordPressRestUrl}/user/login`, req.body )
+			axios.post( `${wordPressRestUrl}/user/login`, req.body, config )
 				.then( response => {
 
 					res.json( {
@@ -62,6 +62,10 @@ app.post( '/create-post', ( req, res ) => {
 			user_id: req.body.userID,
 			title: req.body.title,
 			content: req.body.content,
+			token: req.body.token
+		};
+		var config = {
+			headers: {'Authorization': "bearer " + req.body.token}
 		};
 
 		// Make a create post request.

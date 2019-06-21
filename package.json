@@ -26,6 +26,7 @@
 		"file-loader": "^3.0.1",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
+		"react-render-html": "^0.6.0",
 		"style-loader": "^0.23.1"
 	},
 	"devDependencies": {

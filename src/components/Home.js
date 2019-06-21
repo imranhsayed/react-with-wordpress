@@ -2,6 +2,9 @@ import React from 'react';
 import Navbar from "./Navbar";
 import axios from 'axios';
 import clientConfig from '../client-config';
+import renderHTML from 'react-render-html';
+import { Link } from "@reach/router";
+import Loader from '../loader.gif';
 
 class Home extends React.Component {
 
@@ -28,17 +31,21 @@ class Home extends React.Component {
 
 	render() {
 
-		const { posts } = this.state;
+		const { posts, loading } = this.state;
 
 		return(
-			<div>
+			<div >
 				<Navbar/>
+				{ loading && <img className="loader" src={ Loader } /> }
 				{ posts && posts.length && (
 					posts.map( post => (
 						<div className="card mb-3" key={ post.id }>
 							<h3 className="card-header">{ post.title.rendered }</h3>
 							<div className="card-body">
-								{ post.content.rendered }
+								{ renderHTML( post.content.rendered ) }
+							</div>
+							<div className="card-footer">
+								<Link className="btn btn-primary" to={`/post/${post.id}`}>View Post</Link>
 							</div>
 						</div>
 					) )

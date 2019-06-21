@@ -2,6 +2,7 @@ import React from 'react';
 import './style.css';
 import Home from "./components/Home";
 import { Router } from '@reach/router';
+import Post from './components/Post';
 
 class App extends React.Component {
 
@@ -9,6 +10,7 @@ class App extends React.Component {
 		return (
 			<Router>
 				<Home path="/"/>
+				<Post path="/post/:id"/>
 			</Router>
 		);
 	}

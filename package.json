@@ -33,6 +33,7 @@
 		"react-moment": "^0.9.2",
 		"react-navigation": "^3.9.1",
 		"react-render-html": "^0.6.0",
+		"react-router-dom": "^5.0.1",
 		"style-loader": "^0.23.1",
 		"url-loader": "^1.1.2"
 	},

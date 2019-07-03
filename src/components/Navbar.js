@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from "@reach/router";
-import NavLink from './NavLink';
+import { Link } from "react-router-dom";
 import { isLoggedIn, getUserName } from "./functions";
 
 class Navbar extends React.Component {
@@ -22,12 +21,12 @@ class Navbar extends React.Component {
 				<div >
 					<ul className="navbar-nav my-navbar-nav mr-auto">
 						<li className="nav-item">
-							<NavLink to="/">Home</NavLink>
+							<Link to="/" className="nav-link">Home</Link>
 						</li>
 						{ isLoggedIn() ? (
 							<React.Fragment>
 								<li className="nav-item">
-									<NavLink to={ `/dashboard/${ userName }` }>Dashboard</NavLink>
+									<Link to={ `/dashboard/${ userName }` } className="nav-link">Dashboard</Link>
 								</li>
 								<li className="nav-item">
 									<button onClick={ this.handleLogout } className="btn btn-secondary ml-3">Logout</button>
@@ -35,7 +34,7 @@ class Navbar extends React.Component {
 							</React.Fragment>
 						) : (
 							<li className="nav-item">
-								<NavLink to="/login">Login</NavLink>
+								<Link to="/login" className="nav-link">Login</Link>
 							</li>
 						) }
 					</ul>

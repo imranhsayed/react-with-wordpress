@@ -55,7 +55,9 @@ class Login extends React.Component {
 						userNiceName: user_nicename,
 						userEmail: user_email,
 						loggedIn: true
-					} )
+					} );
+
+					window.location.href = `/#/dashboard/${user_nicename}`;
 				} )
 				.catch( err => {
 					this.setState( { error: err.response.data.message, loading: false } );
@@ -67,51 +69,54 @@ class Login extends React.Component {
 		this.setState( { [event.target.name]: event.target.value } );
 	};
 
+	componentDidMount() {
+		if ( this.state.loggedIn || localStorage.getItem( 'token' ) ) {
+			const user = ( this.state.userNiceName ) ? this.state.userNiceName : localStorage.getItem( 'userName' );
+			window.location.href = `/#/dashboard/${user}`;
+		} else {
+
+		}
+	}
+
 	render() {
 
 		const { username, password, userNiceName, loggedIn, error, loading } = this.state;
 
-		const user = ( userNiceName ) ? userNiceName : localStorage.getItem( 'userName' );
-
-		if ( loggedIn || localStorage.getItem( 'token' ) ) {
-			return ( <Redirect to={`/dashboard/${user}`} noThrow /> )
-		} else {
-			return (
-				<React.Fragment>
-					<Navbar/>
-					<div className="jumbotron" style={{ height: '100vh' }}>
-						<h4>Login</h4>
-						{ error && <div className="alert alert-danger" dangerouslySetInnerHTML={ this.createMarkup( error ) }/> }
-						<form onSubmit={ this.onFormSubmit }>
-							<label className="form-group">
-								Username:
-								<input
-									type="text"
-									className="form-control"
-									name="username"
-									value={ username }
-									onChange={ this.handleOnChange }
-								/>
-							</label>
-							<br/>
-							<label className="form-group">
-								Password:
-								<input
-									type="password"
-									className="form-control"
-									name="password"
-									value={ password }
-									onChange={ this.handleOnChange }
-								/>
-							</label>
-							<br/>
-							<button className="btn btn-primary mb-3" type="submit">Login</button>
-							{ loading && <img className="loader" src={Loader} alt="Loader"/> }
-						</form>
-					</div>
-				</React.Fragment>
-			)
-		}
+		return (
+			<React.Fragment>
+				<Navbar/>
+				<div className="jumbotron" style={{ height: '100vh' }}>
+					<h4>Login</h4>
+					{ error && <div className="alert alert-danger" dangerouslySetInnerHTML={ this.createMarkup( error ) }/> }
+					<form onSubmit={ this.onFormSubmit }>
+						<label className="form-group">
+							Username:
+							<input
+								type="text"
+								className="form-control"
+								name="username"
+								value={ username }
+								onChange={ this.handleOnChange }
+							/>
+						</label>
+						<br/>
+						<label className="form-group">
+							Password:
+							<input
+								type="password"
+								className="form-control"
+								name="password"
+								value={ password }
+								onChange={ this.handleOnChange }
+							/>
+						</label>
+						<br/>
+						<button className="btn btn-primary mb-3" type="submit">Login</button>
+						{ loading && <img className="loader" src={Loader} alt="Loader"/> }
+					</form>
+				</div>
+			</React.Fragment>
+		)
 
 	}
 }

@@ -73,4 +73,5 @@ class SinglePost extends React.Component {
 	}
 }
 
+
 export default SinglePost;

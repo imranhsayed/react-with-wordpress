@@ -27,8 +27,34 @@ class CreatePost extends React.Component {
 		this.setState({ [event.target.name]: event.target.value });
 	};
 
+	testFunction = () => {
+
+		const wordPressSiteUrl = clientConfig.siteUrl;
+		const authToken = localStorage.getItem( 'token' );
+
+		/**
+		 * Make a post request to node server route '/create-post',
+		 * to create a new post on WordPress
+		 */
+		axios.post( `${wordPressSiteUrl}/wp-json/rae/v1/mytest`, { name: 'het', age: 'ho' }, {
+			headers: {'Content-Type' : 'application/json'},
+			withCredentials: true
+		} )
+			.then( res => {
+				console.warn( res );
+			} )
+			.catch( err => {
+				console.warn( err );
+			} );
+	};
+
 	handleFormSubmit = ( event ) => {
 		event.preventDefault();
+
+
+		this.testFunction();
+		return;
+
 		this.setState( { loading: true } );
 
 		const formData = {

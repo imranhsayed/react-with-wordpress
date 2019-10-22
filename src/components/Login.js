@@ -79,7 +79,7 @@ class Login extends React.Component {
 			return (
 				<React.Fragment>
 					<Navbar/>
-					<div className="jumbotron" style={{ height: '100vh' }}>
+					<div style={{ height: '100vh', paddingLeft: '16px' }}>
 						<h4>Login</h4>
 						{ error && <div className="alert alert-danger" dangerouslySetInnerHTML={ this.createMarkup( error ) }/> }
 						<form onSubmit={ this.onFormSubmit }>

@@ -1,22 +1,33 @@
 import React from 'react';
-import Navbar from "./Navbar";
-import CreatePost from "./CreatePost";
+import SidebarMenu from "./sidebar/SidebarMenu";
+import Content from "./content/Content";
 
 class Dashboard extends React.Component {
 
 	constructor( props ) {
 		super( props );
+
+		this.state = {
+			active: false
+		}
 	}
+
+	handleSidebarToggleClick = () => {
+		this.setState( { active: ! this.state.active } )
+	};
 
 
 	render() {
 		return(
 			<React.Fragment>
-				<Navbar/>
-				<div className="jumbotron" style={{ height: '100vh' }}>
-					<h4>Welcome {this.props.userName && this.props.userName }!!</h4>
-					<CreatePost/>
-				</div>
+				<SidebarMenu
+					active={ this.state.active }
+				/>
+				<Content
+					userName={ this.props.userName }
+					handleSidebarToggleClick={ this.handleSidebarToggleClick }
+					active={ this.state.active }
+				/>
 			</React.Fragment>
 		)
 	}

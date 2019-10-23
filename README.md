@@ -1,6 +1,6 @@
 # React with WordPress
 
-:fire: Example of react application to access WordPress REST API.
+:fire: Example of react application with WordPress REST API.
 
 ******* PLEASE STAR MY REPO TO SUPPORT ME 🙏 ******
 
@@ -14,6 +14,14 @@ Please follow 🙏
 ## Create a new Post Demo :video_camera:
 
 ![](create-post.gif)
+
+## Features
+
+1. CRUD operation with WordPress REST API
+2. Authentication with JWT ( Login Logout )
+3. Accessing public and private routes 
+4. Handing WordPress REST API custom end points.
+5. Creating Dashboard with React for CRUD operation.
 
 ## Installation
 

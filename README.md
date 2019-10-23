@@ -4,8 +4,7 @@
 
 ******* PLEASE STAR MY REPO TO SUPPORT ME 🙏 ******
 
-Please follow 🙏
-[twitter](https://twitter.com/imranhsayed)
+Please follow me 🙏 on [twitter](https://twitter.com/imranhsayed)
 
 ## Dashboard Demo
 

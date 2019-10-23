@@ -45,7 +45,6 @@ class Home extends React.Component {
 	render() {
 
 		const { loading, posts, error } = this.state;
-		console.warn( 'loading', loading );
 
 		return(
 			<React.Fragment>

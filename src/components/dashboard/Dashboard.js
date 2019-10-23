@@ -1,7 +1,3 @@
-/**
- * Dashboard Home
- */
-
 import React from 'react';
 import DashboardLayout from "./../layouts/DashboardLayout";
 import { getUserName } from "../functions";
@@ -12,7 +8,7 @@ const Dashboard = ( props ) => {
 
 	return(
 		<DashboardLayout>
-			{ userName ? <h2>Welcome {userName}!!</h2> : ''}
+			{ userName ? <h2>Welcome { userName }!!</h2>: '' }
 		</DashboardLayout>
 	)
 };

@@ -20,7 +20,7 @@ class CreatePost extends React.Component {
 	}
 
 	createMarkup = ( data ) => ({
-		_html: data
+		__html: data
 	});
 
 	handleFormSubmit = ( event ) => {

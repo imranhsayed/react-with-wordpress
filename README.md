@@ -2,13 +2,13 @@
 
 :fire: Example of react application to access WordPress REST API
 
+## Dashboard Demo
+
+![](demo-dashboard.gif)
+
 ## Post Listings Demo :video_camera:
 
 ![](render-posts.gif)
-
-## Create a new Post Demo :video_camera:
-
-![](create-post.gif)
 
 ## Installation
 

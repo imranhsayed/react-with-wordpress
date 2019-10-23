@@ -1,8 +1,8 @@
 import React from 'react';
-import SidebarMenu from "./sidebar/SidebarMenu";
-import Content from "./content/Content";
+import SidebarMenu from "./../dashboard/sidebar/SidebarMenu";
+import Content from "./../content/Content";
 
-class Dashboard extends React.Component {
+class DashboardLayout extends React.Component {
 
 	constructor( props ) {
 		super( props );
@@ -24,13 +24,15 @@ class Dashboard extends React.Component {
 					active={ this.state.active }
 				/>
 				<Content
-					userName={ this.props.userName }
 					handleSidebarToggleClick={ this.handleSidebarToggleClick }
 					active={ this.state.active }
-				/>
+				>
+					{ this.props.children }
+				</Content>
+
 			</React.Fragment>
 		)
 	}
 }
 
-export default Dashboard;
+export default DashboardLayout;

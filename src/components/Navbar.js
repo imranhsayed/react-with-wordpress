@@ -1,7 +1,7 @@
 import React from 'react';
 import NavLink from './NavLink';
 import { isLoggedIn, getUserName } from "./functions";
-import ToggleSidebarBtn from "./sidebar/ToggleSidebarBtn";
+import ToggleSidebarBtn from "./dashboard/sidebar/ToggleSidebarBtn";
 
 class Navbar extends React.Component {
 

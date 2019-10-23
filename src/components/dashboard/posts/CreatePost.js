@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import Loader from '../loader.gif';
-import clientConfig from '../client-config';
+import Loader from '../../../loader.gif';
+import clientConfig from '../../../client-config';
 
 class CreatePost extends React.Component {
 

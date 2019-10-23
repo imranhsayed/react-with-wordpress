@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from "@reach/router";
 import NavLink from './NavLink';
 import { isLoggedIn, getUserName } from "./functions";
+import ToggleSidebarBtn from "./dashboard/sidebar/ToggleSidebarBtn";
 
 class Navbar extends React.Component {
 
@@ -18,7 +18,7 @@ class Navbar extends React.Component {
 		const userName = ( getUserName() ) ? getUserName() : '';
 
 		return (
-			<nav className="navbar my-navbar navbar-expand-lg navbar-dark bg-dark">
+			<nav className="navbar my-navbar navbar-expand-lg main-navbar">
 				<div >
 					<ul className="navbar-nav my-navbar-nav mr-auto">
 						<li className="nav-item">
@@ -38,8 +38,16 @@ class Navbar extends React.Component {
 								<NavLink to="/login">Login</NavLink>
 							</li>
 						) }
+
 					</ul>
 				</div>
+			{/*	If on dashboard page */}
+				{ '/dashboard/root' === location.pathname ? (
+					<ToggleSidebarBtn
+						handleSidebarToggleClick={ this.props.handleSidebarToggleClick }
+						active={ this.props.active }
+					/>
+				) : ''}
 			</nav>
 		);
 	}

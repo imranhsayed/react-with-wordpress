@@ -14,7 +14,7 @@ import { Link } from "@reach/router";
 const NavLink = props => (
 	<Link
 		{...props}
-		getProps={({ isCurrent }) => ( { style: { color: isCurrent ? '#fff' : '#ffffff80' } } )}
+		getProps={({ isCurrent }) => ( { style: { color: isCurrent ? '#fff' : '#fffc' } } )}
 		className="nav-link"
 	/>
 );

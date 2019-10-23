@@ -1,3 +1,7 @@
+/**
+ * Dashboard Home
+ */
+
 import React from 'react';
 import DashboardLayout from "./../layouts/DashboardLayout";
 import { getUserName } from "../functions";

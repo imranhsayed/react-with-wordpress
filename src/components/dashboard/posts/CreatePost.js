@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Loader from '../../../loader.gif';
 import clientConfig from '../../../client-config';
+import DashboardLayout from "../../layouts/DashboardLayout";
 
 class CreatePost extends React.Component {
 
@@ -27,33 +28,8 @@ class CreatePost extends React.Component {
 		this.setState({ [event.target.name]: event.target.value });
 	};
 
-	testFunction = () => {
-
-		const wordPressSiteUrl = clientConfig.siteUrl;
-		const authToken = localStorage.getItem( 'token' );
-
-		/**
-		 * Make a post request to node server route '/create-post',
-		 * to create a new post on WordPress
-		 */
-		axios.post( `${wordPressSiteUrl}/wp-json/rae/v1/mytest`, { name: 'het', age: 'ho' }, {
-			headers: {'Content-Type' : 'application/json'},
-			withCredentials: true
-		} )
-			.then( res => {
-				console.warn( res );
-			} )
-			.catch( err => {
-				console.warn( err );
-			} );
-	};
-
 	handleFormSubmit = ( event ) => {
 		event.preventDefault();
-
-
-		this.testFunction();
-		return;
 
 		this.setState( { loading: true } );
 
@@ -100,27 +76,29 @@ class CreatePost extends React.Component {
 		const { loading, message, postCreated } = this.state;
 
 		return(
-			<form onSubmit={ this.handleFormSubmit } className="mt-5" style={{maxWidth: '800px'}}>
-				<fieldset>
-					<legend className="mb-4">Create Post</legend>
+			<DashboardLayout>
+				<form onSubmit={ this.handleFormSubmit } className="mt-5" style={{maxWidth: '800px'}}>
+					<fieldset>
+						<legend className="mb-4">Create Post</legend>
 
-					{ message && <div className={ `alert ${ postCreated ? 'alert-success' : 'alert-danger' }` } dangerouslySetInnerHTML={ this.createMarkup( message ) }/> }
+						{ message && <div className={ `alert ${ postCreated ? 'alert-success' : 'alert-danger' }` } dangerouslySetInnerHTML={ this.createMarkup( message ) }/> }
 
-					<div className="form-group">
-						<label htmlFor="title">Title</label>
+						<div className="form-group">
+							<label htmlFor="title">Title</label>
 
-						<input type="text" name="title" onChange={ this.handleInputChange } className="form-control" id="title"/>
+							<input type="text" name="title" onChange={ this.handleInputChange } className="form-control" id="title"/>
 
-					</div>
-					<div className="form-group">
-						<label htmlFor="content">Content</label>
-						<textarea name="content" className="form-control" onChange={ this.handleInputChange } id="content" rows="3"/>
-					</div>
+						</div>
+						<div className="form-group">
+							<label htmlFor="content">Content</label>
+							<textarea name="content" className="form-control" onChange={ this.handleInputChange } rows="3"/>
+						</div>
 
-					<button type="submit" className="btn btn-secondary">Submit</button>
-				</fieldset>
-				{ loading && <img className="loader" src={Loader} alt="Loader"/> }
-			</form>
+						<button type="submit" className="btn btn-secondary">Submit</button>
+					</fieldset>
+					{ loading && <img className="loader" src={Loader} alt="Loader"/> }
+				</form>
+			</DashboardLayout>
 		)
 	}
 }

@@ -17,31 +17,31 @@ const SidebarMenu = ( props ) => {
 				<ul className="list-unstyled components">
 					<li className="active">
 						<NavLink
-							to={ `/dashboard/posts` }
+							to="#"
 							data-toggle="collapse"
 							aria-expanded={ subMenuActive }
 							className={ `dropdown-toggle ${ ! subMenuActive ? 'collapsed' : '' }` }
 							onClick={ ()  => setSubMenuActive( ! subMenuActive ) }
 						>
-							Home
+							Posts
 						</NavLink>
 						<ul className={ `collapse list-unstyled ${ subMenuActive ? 'show' : '' }` } id="homeSubmenu">
 							<li>
-								<a href="#">Home 1</a>
+								<a href="#">All Posts</a>
 							</li>
 							<li>
-								<a href="#">Home 2</a>
+								<NavLink to="/dashboard/create-post">Add New</NavLink>
 							</li>
 						</ul>
 					</li>
 					<li>
-						<a href="#">About</a>
+						<a href="#">Pages</a>
 					</li>
 					<li>
-						<a href="#">Portfolio</a>
+						<a href="#">Media</a>
 					</li>
 					<li>
-						<a href="#">Contact</a>
+						<a href="#">Users</a>
 					</li>
 				</ul>
 			</nav>

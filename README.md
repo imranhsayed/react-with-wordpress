@@ -7,13 +7,13 @@
 Please follow 🙏
 [twitter](https://twitter.com/imranhsayed)
 
+## Dashboard Demo
+
+![](demo-dashboard.gif)
+
 ## Post Listings Demo :video_camera:
 
 ![](render-posts.gif)
-
-## Create a new Post Demo :video_camera:
-
-![](create-post.gif)
 
 ## Features
 

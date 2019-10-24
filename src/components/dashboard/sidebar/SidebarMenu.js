@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { getUserName } from "../../functions";
 import NavLink from "../../NavLink";
+import PostMenu from "./menus/PostsMenu";
 
 const SidebarMenu = ( props ) => {
 
-	const [ subMenuActive, setSubMenuActive ] = useState( false );
 	const userName = ( getUserName() ) ? getUserName() : '';
 
 	return (
@@ -15,25 +15,7 @@ const SidebarMenu = ( props ) => {
 				</div>
 
 				<ul className="list-unstyled components">
-					<li className="active">
-						<NavLink
-							to="#"
-							data-toggle="collapse"
-							aria-expanded={ subMenuActive }
-							className={ `dropdown-toggle ${ ! subMenuActive ? 'collapsed' : '' }` }
-							onClick={ ()  => setSubMenuActive( ! subMenuActive ) }
-						>
-							Posts
-						</NavLink>
-						<ul className={ `collapse list-unstyled ${ subMenuActive ? 'show' : '' }` } id="homeSubmenu">
-							<li>
-								<a href="#">All Posts</a>
-							</li>
-							<li>
-								<NavLink to="/dashboard/create-post">Add New</NavLink>
-							</li>
-						</ul>
-					</li>
+					<PostMenu/>
 					<li>
 						<a href="#">Pages</a>
 					</li>

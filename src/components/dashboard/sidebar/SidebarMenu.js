@@ -13,12 +13,8 @@ const SidebarMenu = ( props ) => {
 				<div className="sidebar-header">
 					<NavLink to={ `/dashboard/${ userName }` }>React with WP</NavLink>
 				</div>
-
 				<ul className="list-unstyled components">
-					<PostMenu
-						subMenuActive={props.subMenuActive}
-						setSubMenuActive={props.setSubMenuActive}
-					/>
+					<PostMenu/>
 					<li>
 						<a href="#">Pages</a>
 					</li>
@@ -30,7 +26,6 @@ const SidebarMenu = ( props ) => {
 					</li>
 				</ul>
 			</nav>
-
 	)
 };
 

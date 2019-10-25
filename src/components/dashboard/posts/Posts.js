@@ -1,7 +1,8 @@
 import React from 'react';
 import DashboardLayout from "../../layouts/DashboardLayout";
 
-const AllPosts = () => {
+const Posts = ( props ) => {
+
 	return(
 		<DashboardLayout>
 			<table className="table table-hover">
@@ -37,4 +38,4 @@ const AllPosts = () => {
 	);
 };
 
-export default AllPosts;
+export default Posts;

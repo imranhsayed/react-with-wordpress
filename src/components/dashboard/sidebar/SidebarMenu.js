@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { getUserName } from "../../functions";
 import NavLink from "../../NavLink";
 import PostMenu from "./menus/PostsMenu";
@@ -15,7 +15,10 @@ const SidebarMenu = ( props ) => {
 				</div>
 
 				<ul className="list-unstyled components">
-					<PostMenu/>
+					<PostMenu
+						subMenuActive={props.subMenuActive}
+						setSubMenuActive={props.setSubMenuActive}
+					/>
 					<li>
 						<a href="#">Pages</a>
 					</li>

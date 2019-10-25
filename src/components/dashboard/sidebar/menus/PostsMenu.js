@@ -1,22 +1,20 @@
 import NavLink from "../../../NavLink";
-import React, { useState } from 'react';
+import React from 'react';
 
-const PostMenu = () => {
-
-	const [ subMenuActive, setSubMenuActive ] = useState( false );
+const PostMenu = ( props ) => {
 
 	return (
 		<li className="active">
 			<NavLink
-				to="#"
+				to="/dashboard/all-posts"
 				data-toggle="collapse"
-				aria-expanded={ subMenuActive }
-				className={ `dropdown-toggle ${ ! subMenuActive ? 'collapsed' : '' }` }
-				onClick={ ()  => setSubMenuActive( ! subMenuActive ) }
+				aria-expanded={ props.subMenuActive }
+				className={ `dropdown-toggle ${ ! props.subMenuActive ? 'collapsed' : '' }` }
+				onClick={ ()  => props.setSubMenuActive( ! props.subMenuActive ) }
 			>
 				Posts
 			</NavLink>
-			<ul className={ `collapse list-unstyled ${ subMenuActive ? 'show' : '' }` } id="homeSubmenu">
+			<ul className={ `collapse list-unstyled ${ props.subMenuActive ? 'show' : '' }` } id="homeSubmenu">
 				<li>
 					<NavLink to="/dashboard/all-posts">All Posts</NavLink>
 				</li>

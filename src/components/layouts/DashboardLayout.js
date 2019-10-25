@@ -8,12 +8,17 @@ class DashboardLayout extends React.Component {
 		super( props );
 
 		this.state = {
-			active: false
+			active: false,
+			subMenuActive: false
 		}
 	}
 
 	handleSidebarToggleClick = () => {
 		this.setState( { active: ! this.state.active } )
+	};
+
+	handleSubMenuActive = () => {
+		this.setState( { subMenuActive: ! this.state.subMenuActive } )
 	};
 
 
@@ -22,6 +27,8 @@ class DashboardLayout extends React.Component {
 			<React.Fragment>
 				<SidebarMenu
 					active={ this.state.active }
+					subMenuActive={ this.state.subMenuActive }
+					setSubMenuActive={ this.handleSubMenuActive }
 				/>
 				<Content
 					handleSidebarToggleClick={ this.handleSidebarToggleClick }

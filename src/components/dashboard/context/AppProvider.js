@@ -1,13 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AppContext from "./AppContext";
 
 const AppProvider = ( props ) => {
 
-	const [ menuStatus, setMenuActive ] = useState( {} );
-	const [ user, setUser ] = useState( {} );
+	const [ store, setStore ] = useState( {
+		userName: '',
+		token: '',
+		activeMenu: {},
+		sidebarActive: true
+	} );
+
+	useEffect( () => {
+
+		const token = localStorage.getItem( 'token' );
+		const userName = localStorage.getItem( 'userName' );
+
+		setStore({ ...store, token, userName });
+
+	}, [] );
 
 	return (
-		<AppContext.Provider value={ [ menuStatus, setMenuActive, user, setUser ] }>
+		<AppContext.Provider value={ [ store, setStore ] }>
 			{ props.children }
 		</AppContext.Provider>
 	)

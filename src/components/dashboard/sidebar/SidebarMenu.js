@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { getUserName } from "../../functions";
+import React, { useContext } from 'react';
 import NavLink from "../../NavLink";
 import PostMenu from "./menus/PostMenu";
 import PageMenu from "./menus/PageMenu";
+import AppContext from "../context/AppContext";
 
 const SidebarMenu = ( props ) => {
 
-	const userName = ( getUserName() ) ? getUserName() : '';
+	const [ store, setStore ] = useContext( AppContext );
 
 	return (
 
-			<nav id="sidebar" className={ props.active ? 'active' : '' }>
+			<nav id="sidebar" className={ store.sidebarActive ? 'active' : '' }>
 				<div className="sidebar-header">
 					<NavLink to={ `/dashboard` }>React with WP</NavLink>
 				</div>

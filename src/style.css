@@ -62,10 +62,11 @@ a:focus {
 	background: #24404d;
 	color: #fff;
 	transition: all 0.3s;
+	margin-left: -250px;
 }
 
 #sidebar.active {
-	margin-left: -250px;
+	margin-left: 0;
 }
 
 #sidebar .sidebar-header {
@@ -145,7 +146,7 @@ a.article:hover {
  * Content.
  */
 #content {
-	width: calc(100% - 250px);
+	width: 100%;
 	min-height: 100vh;
 	transition: all 0.3s;
 	position: absolute;
@@ -154,7 +155,7 @@ a.article:hover {
 }
 
 #content.active {
-	width: 100%;
+	width: calc(100% - 250px);
 }
 
 /**

@@ -67,7 +67,6 @@ class CreatePost extends React.Component {
 	render() {
 
 		const { loading, message, postCreated } = this.state;
-		console.warn( 'state', this.state );
 
 		return(
 			<DashboardLayout>

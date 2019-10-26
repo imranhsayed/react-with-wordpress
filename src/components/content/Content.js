@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Navbar from "../Navbar";
+import AppContext from "../context/AppContext";
 
 const Content = ( props ) => {
-	return (
-		<div id="content" className={ props.active ? 'active' : '' }>
-			{/* Top Navbar */}
-			<Navbar
-				handleSidebarToggleClick={ props.handleSidebarToggleClick }
-				active={ props.active }
-			/>
 
+	const [ store, setStore ] = useContext( AppContext );
+
+	return (
+		<div id="content" className={ store.sidebarActive ? '' : 'active' }>
+			{/* Top Navbar */}
+			<Navbar/>
 			{/* Main Content */}
 			<div className="main-content">
 				{ props.children }

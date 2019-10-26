@@ -62,10 +62,11 @@ a:focus {
 	background: #24404d;
 	color: #fff;
 	transition: all 0.3s;
+	margin-left: -250px;
 }
 
 #sidebar.active {
-	margin-left: -250px;
+	margin-left: 0;
 }
 
 #sidebar .sidebar-header {

@@ -1,6 +1,6 @@
 # React with WordPress
 
-:fire: Example of react application with WordPress REST API.
+:fire: Example of react application with WordPress REST API
 
 ******* PLEASE STAR MY REPO TO SUPPORT ME 🙏 ******
 

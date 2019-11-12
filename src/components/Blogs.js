@@ -65,6 +65,18 @@ const Blogs = () => {
 										<i className="fa fa-clock-o"/>
 										<span>{ post.date }</span>
 									</div>
+
+									{/*	Categories*/}
+									{ post.categories.length ? (
+										<div className="post-category">
+											<i className="fa fa-folder"/>
+											{
+												post.categories.map( category => (
+													<a href={ `category/${ category.term_id }` } key={ category.term_id }>{ category.name }</a>
+												) )
+											}
+										</div>
+									) : '' }
 								</div>
 							</div>
 						)

@@ -9,6 +9,7 @@ import CreatePost from "./components/dashboard/posts/CreatePost";
 import AppProvider from "./components/context/AppProvider";
 import Posts from "./components/dashboard/posts/Posts";
 import Pages from "./components/dashboard/pages/Pages";
+import Blogs from "./components/Blogs";
 
 class App extends React.Component {
 
@@ -19,6 +20,7 @@ class App extends React.Component {
 			<AppProvider>
 				<Router>
 					<Home path="/"/>
+					<Blogs path="/blogs"/>
 					<Login path="/login"/>
 					<Dashboard path="/dashboard"/>
 					<Posts path="/dashboard/posts"/>

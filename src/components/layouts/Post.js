@@ -9,10 +9,13 @@ export const Post = ( props ) => {
 		<div className="post-wrapper">
 
 			{/*TItle*/}
-			{ post.title ? <h2 className="post-title">{ post.title }</h2> : '' }
+			{ post.title ? <a href={`/post/${ post.id }`} className="post-title">{ post.title }</a> : '' }
 
 			{/*Featured Image*/}
 			{ post.attachment_image.img_sizes ? <FeaturedImage image={ post.attachment_image }/> : '' }
+
+			{/*Excerpt*/}
+			{ post.title ? <p className="post-excerpt mt-4">{ post.excerpt }</p> : '' }
 
 			{/*Post meta*/}
 			<div className="post-meta">
@@ -32,9 +35,15 @@ export const Post = ( props ) => {
 					<div className="post-category">
 						<i className="fa fa-folder"/>
 						{
-							post.categories.map( category => (
-								<a href={ `category/${ category.term_id }` } key={ category.term_id }>{ category.name }</a>
-							) )
+							post.categories.map( ( category, index ) => {
+								return (
+									// If its not the last item.
+									index !== ( post.categories.length - 1 ) ?
+										<a href={ `category/${ category.term_id }` } key={ category.term_id }>{ category.name }, </a>
+										:
+										<a href={ `category/${ category.term_id }` } key={ category.term_id }>{ category.name }</a>
+								);
+							} )
 						}
 					</div>
 				) : '' }

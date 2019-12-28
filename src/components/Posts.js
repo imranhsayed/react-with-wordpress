@@ -4,6 +4,7 @@ import axios from "axios";
 import Loader from "./layouts/Loader";
 import { Post } from "./layouts/Post";
 import { Pagination } from "./layouts/Pagination";
+import PostLoader from "./layouts/PostLoader";
 
 export const Posts = ( props ) => {
 
@@ -25,7 +26,6 @@ export const Posts = ( props ) => {
 		axios.get( `${ wordPressSiteURL }/wp-json/rae/v1/posts?page_no=${ currentPage }` )
 			.then( res => {
 
-				console.warn( 'loading', loading );
 				setLoading( false );
 
 				if ( 200 === res.data.status ) {
@@ -47,8 +47,8 @@ export const Posts = ( props ) => {
 
 	return (
 		<React.Fragment>
-			{ loading ? <Loader/> : '' }
-			<div className="container" style={ { overflow: 'hidden' } }>
+			{ loading ? <PostLoader/> : '' }
+			<div className="container blog" style={ { overflow: 'hidden' } }>
 				{ ( !loading && null !== posts && posts.length ) ? (
 					<React.Fragment>
 						{ getPosts( posts ) }

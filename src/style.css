@@ -21,6 +21,10 @@ a:focus {
 	transition: all 0.3s;
 }
 
+.container.blog {
+	max-width: 960px;
+}
+
 .navbar {
 	padding: 15px 10px;
 	background: #eee;
@@ -224,13 +228,25 @@ a.article:hover {
 
 /* posts */
 .post-wrapper {
-	width: 100%;
-	height: auto;
+	background-color: #fff;
+	margin-bottom: 36px;
+	padding: 24px 36px;
 }
 
 .post-title {
 	margin-bottom: 16px;
 	color: #00528a;
+	font-size: 36px;
+	display: inline-block;
+}
+
+.post-wrapper img {
+	width: 100%;
+	height: auto;
+}
+
+.post-excerpt {
+	color: #4a4a4a;
 }
 
 .post-meta {
@@ -296,4 +312,51 @@ a.article:hover {
 	color: #50b8dc;
 }
 
+/*Post Loader css*/
+@keyframes gradientBG {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
 
+.loader-title {
+	display: block;
+	height: 54px;
+	background-image: linear-gradient(-45deg, #fff, #f3f4f4, #fff, #f3f4f4 );
+	background-size: 400% 400%;
+	animation: gradientBG 3s ease infinite;
+}
+
+.loader-img {
+	display: block;
+	height: 300px;
+	background-image: linear-gradient(-45deg, #fff, #f3f4f4, #fff, #f3f4f4 );
+	background-size: 400% 400%;
+	animation: gradientBG 3s ease infinite;
+}
+
+.loader-excerpt {
+	display: block;
+	height: 100px;
+	background-image: linear-gradient(-45deg, #fff, #f3f4f4, #fff, #f3f4f4 );
+	background-size: 400% 400%;
+	animation: gradientBG 3s ease infinite;
+}
+
+.loader-author,
+.loader-date,
+.loader-category {
+	display: block;
+	width: 100px;
+	height: 24px;
+	background-image: linear-gradient(-45deg, #fff, #f3f4f4, #fff, #f3f4f4 );
+	background-size: 400% 400%;
+	animation: gradientBG 3s ease infinite;
+	margin-right: 20px;
+}

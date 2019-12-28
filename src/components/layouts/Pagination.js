@@ -15,8 +15,9 @@ export const Pagination = ( props ) => {
 	};
 
 	return (
-		<div>
-			{ isTherePreviousPage && <Link to={ getPageLink( currentPage - 1 ) } onClick={ () => setCurrentPage( currentPage - 1 ) }>Previous</Link> }
+		<div className="pagination">
+			{ isTherePreviousPage && <Link to={ getPageLink( currentPage - 1 ) } onClick={ () => setCurrentPage( currentPage - 1 ) } className="prev">Previous</Link> }
+
 			{ paginationArray &&
 			paginationArray.map( ( item, index ) => {
 				// If item is not equal to '...' and the item value is not equal to current page.
@@ -25,8 +26,11 @@ export const Pagination = ( props ) => {
 					return (
 						// Page number links.
 						<React.Fragment key={ `${ item }-${ index }` }>
-							<Link to={ getPageLink( item ) } onClick={ () => setCurrentPage( item ) }>
-								<span>{ item }</span>
+							<Link
+								to={ getPageLink( item ) }
+								onClick={ () => setCurrentPage( item ) }
+							>
+								<span className="page-no">{ item }</span>
 							</Link>
 						</React.Fragment>
 					);
@@ -34,12 +38,12 @@ export const Pagination = ( props ) => {
 					return (
 						// if its '...' or the current page, it should not be clickable ( should not be a link )
 						<span key={ `${ item }-${ index }` }>
-							<span className={ currentPage === item ? 'active' : '' }>{ item }</span>
+							<span className={ currentPage === item ? 'page-no active' : '' }>{ item }</span>
 						</span>
 					);
 				}
 			} ) }
-			{ isThereNextPage && <Link to={ getPageLink( currentPage + 1 ) } onClick={ () => setCurrentPage( currentPage + 1 ) }>Next</Link> }
+			{ isThereNextPage && <Link to={ getPageLink( currentPage + 1 ) } onClick={ () => setCurrentPage( currentPage + 1 ) } className="next">Next</Link> }
 		</div>
 	)
 };

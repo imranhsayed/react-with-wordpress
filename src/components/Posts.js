@@ -7,20 +7,20 @@ import { Pagination } from "./layouts/Pagination";
 
 export const Posts = ( props ) => {
 
-	const [ currentPage, setCurrentPage ] = useState( props.pageId );
+	const pageId = parseInt( props.pageId );
 
-	const [ totalPages, setTotalPages ] = useState( 1 );
-	const [ loading, setLoading ] = useState( false );
-	const [ errMessage, setError ] = useState( '' );
-	const [ posts, setPosts ] = useState( null );
+	const [currentPage, setCurrentPage] = useState( pageId );
+
+	const [totalPages, setTotalPages] = useState( 1 );
+	const [loading, setLoading]       = useState( false );
+	const [errMessage, setError]      = useState( '' );
+	const [posts, setPosts]           = useState( null );
 
 	useEffect( () => {
 
 		const wordPressSiteURL = clientConfig.siteUrl;
 
 		setLoading( true );
-
-		console.warn( 'came here', loading );
 
 		axios.get( `${ wordPressSiteURL }/wp-json/rae/v1/posts?page_no=${ currentPage }` )
 			.then( res => {
@@ -39,17 +39,25 @@ export const Posts = ( props ) => {
 				setError( err.response.data.message );
 			} );
 
-	}, [ currentPage ] );
+	}, [currentPage] );
+
+	const getPosts = ( posts ) => {
+		return posts.map( post => <Post key={ post.id } post={ post }/> );
+	};
 
 	return (
 		<React.Fragment>
 			{ loading ? <Loader/> : '' }
-			<div className="container" style={ { overflow: 'hidden' }  }>
-				{ ( ! loading && null !== posts && posts.length ) ? (
-					posts.map( post => <Post key={ post.id } post={ post } /> )
-				) : <div>{ errMessage }</div> }
-				{ ( null !== posts && posts.length ) ? (
-					<Pagination currentPage={ parseInt( currentPage ) } setCurrentPage={ setCurrentPage } totalPages={totalPages}/>
+			<div className="container" style={ { overflow: 'hidden' } }>
+				{ ( !loading && null !== posts && posts.length ) ? (
+					<React.Fragment>
+						{ getPosts( posts ) }
+						<Pagination
+							currentPage={ currentPage }
+							setCurrentPage={ setCurrentPage }
+						    totalPages={ totalPages }
+						/>
+					</React.Fragment>
 				) : <div>{ errMessage }</div> }
 			</div>
 		</React.Fragment>

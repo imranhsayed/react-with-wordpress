@@ -15,7 +15,6 @@ const AppProvider = ( props ) => {
 		const userName = localStorage.getItem( 'userName' );
 
 		setStore( { ...store, token, userName } );
-		console.warn( 'store', store );
 
 	}, [] );
 

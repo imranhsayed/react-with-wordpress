@@ -10,17 +10,17 @@ import AppProvider from "./components/context/AppProvider";
 import Posts from "./components/dashboard/posts/Posts";
 import Pages from "./components/dashboard/pages/Pages";
 import Blogs from "./components/Blogs";
+import Page from "./components/Page";
 
 class App extends React.Component {
-
-
 
 	render() {
 		return (
 			<AppProvider>
 				<Router>
 					<Home path="/"/>
-					<Blogs path="/blogs"/>
+					<Blogs path="/blogs/"/>
+					<Page path="/page/:id"/>
 					<Login path="/login"/>
 					<Dashboard path="/dashboard"/>
 					<Posts path="/dashboard/posts"/>

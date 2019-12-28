@@ -210,3 +210,23 @@ a.article:hover {
 .sidebar-header .nav-link {
 	font-size: 24px !important;
 }
+
+.active {
+	font-weight: 800;
+}
+
+@media only screen and (max-width: 1020px) {
+	.navbar-expand-lg .navbar-nav {
+		flex-direction: row;
+	}
+
+	.navbar-expand-lg .nav-item {
+		padding-right: 16px;
+	}
+}
+
+/* posts */
+.post-wrapper {
+
+}
+

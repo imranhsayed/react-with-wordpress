@@ -10,6 +10,9 @@ Please follow me 🙏 on [twitter](https://twitter.com/imranhsayed)
 
 ![](demo-dashboard.gif)
 
+## Pagination :video_camera
+![](pagination.gif)
+
 ## Post Listings Demo :video_camera:
 
 ![](render-posts.gif)
@@ -21,6 +24,7 @@ Please follow me 🙏 on [twitter](https://twitter.com/imranhsayed)
 3. Accessing public and private routes 
 4. Handing WordPress REST API custom end points.
 5. Creating Dashboard with React for CRUD operation.
+6. Pagination
 
 ## Installation
 

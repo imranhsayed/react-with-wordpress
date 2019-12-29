@@ -1,6 +1,5 @@
 import React from 'react';
 import Navbar from "./Navbar";
-import { Link } from "@reach/router";
 import renderHTML from "react-render-html";
 import Moment from "react-moment";
 import Loader from "../loader.gif";

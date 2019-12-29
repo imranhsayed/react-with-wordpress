@@ -6,8 +6,6 @@ const PostMenu = () => {
 
 	const [ store, setStore ] = useContext( AppContext );
 
-	console.warn( 'store', store );
-
 	return(
 		<li className={ '/dashboard/posts' === window.location.pathname ? 'active' : '' }>
 			<NavLink

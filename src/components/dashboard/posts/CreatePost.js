@@ -45,7 +45,7 @@ class CreatePost extends React.Component {
 			}
 		} )
 			.then( res => {
-				console.warn( 'res', res );
+
 				this.setState( {
 					loading: false,
 					postCreated: !! res.data.id,
@@ -53,7 +53,7 @@ class CreatePost extends React.Component {
 				} )
 			} )
 			.catch( err => {{
-				console.warn( 'errr', err.response.data );
+
 				this.setState( { loading: false, message: err.response.data.message } )
 			}} )
 	};

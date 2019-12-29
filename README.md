@@ -34,9 +34,9 @@ Please follow me 🙏 on [twitter](https://twitter.com/imranhsayed)
 
 3. Run `npm install`
 
-## Add [WordPress REST API Plugin](https://github.com/imranhsayed/rest-api-endpoints)
+## Add [REST API ENDPOINTS WordPress Plugin](https://github.com/imranhsayed/rest-api-endpoints)
 
-* Clone the [WordPress REST API Plugin](https://github.com/imranhsayed/rest-api-endpoints) in your WordPress plugin directory.
+* Clone the [REST API ENDPOINTS](https://github.com/imranhsayed/rest-api-endpoints) plugin in your WordPress plugin directory.
 
 `git clone git@github.com:imranhsayed/rest-api-endpoints.git`
 

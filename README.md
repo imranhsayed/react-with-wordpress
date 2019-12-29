@@ -2,7 +2,7 @@
 
 :fire: Example of react application with WordPress REST API
 
-******* PLEASE STAR MY REPO TO SUPPORT ME 🙏 ******
+******* PLEASE STAR MY REPO TO SUPPORT MY WORK 🙏 ******
 
 Please follow me 🙏 on [twitter](https://twitter.com/imranhsayed)
 
@@ -10,7 +10,7 @@ Please follow me 🙏 on [twitter](https://twitter.com/imranhsayed)
 
 ![](demo-dashboard.gif)
 
-## Pagination :video_camera
+## Pagination :video_camera:
 ![](pagination.gif)
 
 ## Post Listings Demo :video_camera:
@@ -33,6 +33,12 @@ Please follow me 🙏 on [twitter](https://twitter.com/imranhsayed)
 2. `git checkout branchname`
 
 3. Run `npm install`
+
+## Add [WordPress REST API Plugin](https://github.com/imranhsayed/rest-api-endpoints)
+
+* Clone the [WordPress REST API Plugin](https://github.com/imranhsayed/rest-api-endpoints) in your WordPress plugin directory.
+
+`git clone git@github.com:imranhsayed/rest-api-endpoints.git`
 
 ## Configure
 
@@ -125,4 +131,8 @@ new post id, or error if any.
 
 Common
 - `prod` Runs webpack in production mode
+
+## Free Courses
+
+[Codeytek](https://codeytek.com/)
 

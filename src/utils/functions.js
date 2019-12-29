@@ -18,7 +18,7 @@ export const createPaginationArray = ( currentPage, totalPages ) => {
 	}
 
 	/**
-	 * Push the two inde items before the current page.
+	 * Push the two index items before the current page.
 	 */
 	if ( 0 < currentPage - 2 ) {
 		loopableArray.push( currentPage - 2 );

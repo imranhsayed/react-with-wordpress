@@ -1,5 +1,6 @@
 import React from 'react';
 import FeaturedImage from "./FeaturedImage";
+import { Link } from '@reach/router';
 
 export const Post = ( props ) => {
 
@@ -9,10 +10,10 @@ export const Post = ( props ) => {
 		<div className="post-wrapper">
 
 			{/*TItle*/}
-			{ post.title ? <a href={`/post/${ post.id }`} className="post-title">{ post.title }</a> : '' }
+			{ post.title ? <Link to={`/post/${ post.id }`} className="post-title">{ post.title }</Link> : '' }
 
 			{/*Featured Image*/}
-			{ post.attachment_image.img_sizes ? <FeaturedImage image={ post.attachment_image }/> : '' }
+			{ post.attachment_image.img_sizes ? <FeaturedImage title={ post.title } image={ post.attachment_image }/> : '' }
 
 			{/*Excerpt*/}
 			{ post.title ? <p className="post-excerpt mt-4">{ post.excerpt }</p> : '' }
@@ -20,10 +21,10 @@ export const Post = ( props ) => {
 			{/*Post meta*/}
 			<div className="post-meta">
 				{/*Author*/}
-				<a href={ `/author/${ post.meta.author_id }` } className="post-author">
+				<Link to={ `/author/${ post.meta.author_id }` } className="post-author">
 					<i className="fa fa-user"/>
 					<span>{ post.meta.author_name }</span>
-				</a>
+				</Link>
 				{/*Date*/}
 				<div className="post-date">
 					<i className="fa fa-clock-o"/>
@@ -39,9 +40,9 @@ export const Post = ( props ) => {
 								return (
 									// If its not the last item.
 									index !== ( post.categories.length - 1 ) ?
-										<a href={ `category/${ category.term_id }` } key={ category.term_id }>{ category.name }, </a>
+										<Link to={ `category/${ category.term_id }` } key={ category.term_id }>{ category.name }, </Link>
 										:
-										<a href={ `category/${ category.term_id }` } key={ category.term_id }>{ category.name }</a>
+										<Link to={ `category/${ category.term_id }` } key={ category.term_id }>{ category.name }</Link>
 								);
 							} )
 						}

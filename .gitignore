@@ -3,7 +3,5 @@
 npm-debug.log
 yarn-error.log
 .DS_Store
-build/
-node_modules/
-dist/
+node_modules
 .cache

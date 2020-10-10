@@ -1,6 +1,7 @@
 import React from 'react';
 import FeaturedImage from "./FeaturedImage";
 import { Link } from '@reach/router';
+import { sanitize } from "../../utils/functions";
 
 export const Post = ( props ) => {
 
@@ -16,7 +17,7 @@ export const Post = ( props ) => {
 			{ post.attachment_image.img_sizes ? <FeaturedImage title={ post.title } image={ post.attachment_image }/> : '' }
 
 			{/*Excerpt*/}
-			{ post.title ? <p className="post-excerpt mt-4">{ post.excerpt }</p> : '' }
+			{ post.title ? <p className="post-excerpt mt-4" dangerouslySetInnerHTML={{__html: sanitize( post.excerpt )}}/> : '' }
 
 			{/*Post meta*/}
 			<div className="post-meta">

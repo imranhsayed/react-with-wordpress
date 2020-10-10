@@ -1,6 +1,5 @@
 const clientConfig = {
-	// siteUrl: 'https://codeytek.com',
-	siteUrl: 'http://localhost:8020'
+	siteUrl: 'https://codeytek.com',
 };
 
 export default clientConfig;

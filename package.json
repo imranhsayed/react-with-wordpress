@@ -21,7 +21,7 @@
 	"homepage": "https://github.com/imranhsayed/react-workshop#readme",
 	"dependencies": {
 		"@reach/router": "^1.2.1",
-		"axios": "^0.18.1",
+		"axios": "^0.21.1",
 		"dompurify": "^2.1.1",
 		"moment": "^2.24.0",
 		"qs": "^6.7.0",
